@@ -1,11 +1,14 @@
 import { Pressable, StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+
+import { Route, Routes, Navigate } from 'react-router-native';
+
+
 import TopBar from './TopBar';
-
-
 import theme from '../../theme';
 import Text from './Text';
 import NewGoal from '../NewGoal';
+import Home from './Home';
 
 const styles = StyleSheet.create({
     container: {
@@ -16,26 +19,16 @@ const styles = StyleSheet.create({
   });
 
 const Main = () => {
-let show = true
- const onPress = () =>{
-  console.log("d")
-show = !show
-console.log(show)
- }
+
     return (
       <View>
         
         <TopBar />
-        <Text color= 'primary'> Home page</Text>
 
-        <Pressable onPress={onPress} >
-        <Text color= 'primary'> Create a new goal</Text>
-
-        </Pressable>
-
-        {show ? <NewGoal /> : null}
+        <Routes>
+       <Route path="/" element={<Home />} exact />
+       </Routes>
        
-        <StatusBar style="auto" />
 
       </View>
     );
