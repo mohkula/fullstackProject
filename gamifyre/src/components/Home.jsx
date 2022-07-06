@@ -1,11 +1,15 @@
 
-import { Pressable, StyleSheet, View } from 'react-native';
-import Text from './Text';
+import { Pressable,  View } from 'react-native';
+import { useNavigate } from "react-router-native";
 
+import Text from './Text';
+import GoalCounter from './GoalCounter';
 const Home = () => {
 
+const navigate = useNavigate()
+
     const onPress = () => {
-        console.log("pressed")
+navigate("/newGoal")
     }
     return (
         <View>
@@ -17,12 +21,17 @@ const Home = () => {
           <Text color= 'primary'> Create a new goal</Text>
   
           </Pressable>
+
   
          
          
-        
+          <View>
+          <GoalCounter />
+
+        </View>
   
         </View>
+        
       );
 }
 

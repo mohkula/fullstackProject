@@ -8,7 +8,19 @@ import theme from "../../theme";
 const styles = StyleSheet.create({
     container: {
       backgroundColor: theme.colors.primary,
+      padding: 15,
+      borderRadius: 6,
+      margin: 10,
     },
+
+    box: {
+      backgroundColor: 'black',
+      padding: 7,
+      borderRadius: 3,
+      margin: 5,
+    },
+
+    
    
   });
 
@@ -21,17 +33,21 @@ const NewGoalForm = ({ onSubmit }) => {
         name="steps"
         placeholder="number of steps"
       />
+      
       <FormikTextInput name="increase" placeholder="number of increments per press" />
-      <Pressable style={styles.signinContainer} onPress={onSubmit}>
+      <View style= {styles.box}>
+
+      <Pressable  onPress={onSubmit}>
         <Text
           style={{ textAlign: "center" }}
           color="white"
           fontWeight="bold"
           fontSize="subheading"
-        >
+          >
           Create a goal
         </Text>
       </Pressable>
+          </View>
     </View>
   );
 };

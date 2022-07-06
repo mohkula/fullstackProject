@@ -23,7 +23,7 @@ const NewGoal = () => {
  
   
     const onSubmit = async () => {
-    console.log("form submitted")
+    
     };
   
     return (

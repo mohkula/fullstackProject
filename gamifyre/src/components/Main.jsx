@@ -1,12 +1,11 @@
-import { Pressable, StyleSheet, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import {  StyleSheet, View } from 'react-native';
 
 import { Route, Routes, Navigate } from 'react-router-native';
 
 
 import TopBar from './TopBar';
 import theme from '../../theme';
-import Text from './Text';
+
 import NewGoal from '../NewGoal';
 import Home from './Home';
 
@@ -27,6 +26,7 @@ const Main = () => {
 
         <Routes>
        <Route path="/" element={<Home />} exact />
+       <Route path="/newGoal" element={<NewGoal />} exact />
        </Routes>
        
 
