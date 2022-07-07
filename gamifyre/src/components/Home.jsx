@@ -26,8 +26,8 @@ navigate("/newGoal")
          
          
           <View>
-          <GoalCounter />
-
+          
+<GoalCounter />
         </View>
   
         </View>
