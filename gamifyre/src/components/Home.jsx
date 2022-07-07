@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-native";
 
 import Text from './Text';
 import GoalCounter from './GoalCounter';
-const Home = () => {
+const Home = (props) => {
 
 const navigate = useNavigate()
 
@@ -27,7 +27,7 @@ navigate("/newGoal")
          
           <View>
           
-<GoalCounter />
+{props.name ? <GoalCounter increment = {props.increment}/> : null}
         </View>
   
         </View>

@@ -1,33 +1,41 @@
 import NewGoalForm from "./components/NewGoalForm";
 import { Formik } from "formik";
 import { View } from "react-native";
+import { useNavigate } from "react-router-native";
 
 import * as yup from "yup";
+import GoalCounter from "./components/GoalCounter";
 
 
 const initialValues = {
-  password: "",
-  username: "",
+  name: "",
+  description: "",
+  steps: 0,
+  increments: 0
 };
 
 const validationSchema = yup.object().shape({
-  username: yup.string().min(1).max(30).required("Username is required"),
-  password: yup.string().min(5).max(50).required("Password is required"),
-  passwordConfirmation: yup
-    .string()
-    .oneOf([yup.ref("password"), null], 'Passwords must match')
-    .required("Password Confirmation is required"),
+  name: yup.string().min(1).max(30).required("name is required"),
+  steps: yup.number().typeError('steps must be a number')
+  .positive('steps must be positive')
+  .required('number of steps is required'),
+  increments: yup.number().typeError('increments must be a number')
+  .positive('increments must be positive')
+  .required('number of increments is required')
 });
 
 const NewGoal = () => {
- 
+const navigate = useNavigate() 
   
-    const onSubmit = async () => {
-    
+    const onSubmit = (values) => {
+      console.log(values)
+      navigate('/')
+          
+      
     };
   
     return (
-      <View >
+      
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -35,7 +43,7 @@ const NewGoal = () => {
         >
           {({ handleSubmit }) => <NewGoalForm onSubmit={handleSubmit} />}
         </Formik>
-      </View>
+      
     );
   };
   

@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
 
 const NewGoalForm = ({ onSubmit }) => {
   return (
+
     <View style={styles.container}>
       <FormikTextInput name="name" placeholder="Name of the goal" />
       <FormikTextInput name="description" placeholder="Description of the goal" />
@@ -34,10 +35,10 @@ const NewGoalForm = ({ onSubmit }) => {
         placeholder="number of steps"
       />
       
-      <FormikTextInput name="increase" placeholder="number of increments per press" />
+      <FormikTextInput name="increments" placeholder="number of increments per press" />
       <View style= {styles.box}>
 
-      <Pressable  onPress={onSubmit}>
+      <Pressable style={styles.container} onPress={onSubmit}>
         <Text
           style={{ textAlign: "center" }}
           color="white"

@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   });
 
   
-const GoalCounter = () => {
+const GoalCounter = (props) => {
     const [count, setCount] = useState(0)
 
     
@@ -60,7 +60,7 @@ const GoalCounter = () => {
 
 <View style={styles.container}>
 
-<Button style={styles.circle} title='+' onPress={() => setCount(count +1)}>
+<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increment)}>
 
 </Button>
 
@@ -73,7 +73,7 @@ const GoalCounter = () => {
 </View>
 
 
-<Button style={styles.circle} title='-' onPress={() => setCount(count -1)}>
+<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increment)}>
 
 </Button>
 
