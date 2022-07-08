@@ -1,10 +1,11 @@
 import { gql } from '@apollo/client';
 
 
-export const GET_PEOPLE = gql`
+export const GET_GOALS = gql`
 query {
-    allPersons {
+    allGoals {
       name
+      
     }
   } 
 

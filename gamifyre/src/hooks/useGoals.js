@@ -1,11 +1,11 @@
-import { GET_PEOPLE } from "../graphql/queries";
+import { GET_GOALS } from "../graphql/queries";
 
 import { useQuery } from "@apollo/client";
 
 
-const usePersons = () => {
+const useGoals = () => {
 
-    const { data, ...rest } =  useQuery(GET_PEOPLE, {
+    const { data, ...rest } =  useQuery(GET_GOALS, {
         
          fetchPolicy: 'cache-and-network',
      })
@@ -16,4 +16,4 @@ console.log(data)
 
 }
 
-export default usePersons
+export default useGoals

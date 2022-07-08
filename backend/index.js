@@ -1,50 +1,35 @@
 const { ApolloServer, gql } = require('apollo-server')
 
-let persons = [
+let goals = [
   {
-    name: "Arto Hellas",
-    phone: "040-123543",
-    street: "Tapiolankatu 5 A",
-    city: "Espoo",
-    id: "3d594650-3436-11e9-bc57-8b80ba54c431"
-  },
-  {
-    name: "Matti Luukkainen",
-    phone: "040-432342",
-    street: "Malminkaari 10 A",
-    city: "Helsinki",
-    id: '3d599470-3436-11e9-bc57-8b80ba54c431'
-  },
-  {
-    name: "Venla Ruuska",
-    street: "Nallemäentie 22 C",
-    city: "Helsinki",
-    id: '3d599471-3436-11e9-bc57-8b80ba54c431'
-  },
+    name: "Pushups",
+    description: "do pushups",
+    steps: 100,
+    increments: 1
+  }
 ]
 
 const typeDefs = gql`
-  type Person {
+  type Goal {
     name: String!
-    phone: String
-    street: String!
-    city: String! 
-    id: ID!
+    description: String
+    steps: Int!
+    increments: Int!
   }
 
   type Query {
-    personCount: Int!
-    allPersons: [Person!]!
-    findPerson(name: String!): Person
+    goalCount: Int!
+    allGoals: [Goal!]!
+    findGoal(name: String!): Goal
   }
 `
 
 const resolvers = {
   Query: {
-    personCount: () => persons.length,
-    allPersons: () => persons,
-    findPerson: (root, args) =>
-      persons.find(p => p.name === args.name)
+    goalCount: () => goals.length,
+    allGoals: () => goals,
+    findGoal: (root, args) =>
+      goals.find(p => p.name === args.name)
   }
 }
 

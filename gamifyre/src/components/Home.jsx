@@ -2,15 +2,15 @@
 import { Pressable,  View } from 'react-native';
 import { useNavigate } from "react-router-native";
 
-import usePersons from '../hooks/usePersons';
+import useGoals from '../hooks/useGoals';
 import Text from './Text';
 import GoalCounter from './GoalCounter';
 const Home = (props) => {
 
 
-  const { data } = usePersons();
+  const { data } = useGoals();
 
-
+  
   
 const navigate = useNavigate()
 
@@ -21,6 +21,7 @@ navigate("/newGoal")
         <View>
           
          
+         {data ? <Text color= 'primary' > {data.allGoals[0].name}</Text> : null}
           <Text color= 'primary' style={{ textAlign: "center" }}> Home page</Text>
   
           <Pressable onPress={onPress} >
