@@ -2,10 +2,16 @@
 import { Pressable,  View } from 'react-native';
 import { useNavigate } from "react-router-native";
 
+import usePersons from '../hooks/usePersons';
 import Text from './Text';
 import GoalCounter from './GoalCounter';
 const Home = (props) => {
 
+
+  const { data } = usePersons();
+
+
+  
 const navigate = useNavigate()
 
     const onPress = () => {
