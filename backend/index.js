@@ -4,9 +4,31 @@ let goals = [
   {
     name: "Pushups",
     description: "do pushups",
-    steps: 100,
+    steps: 26,
     increments: 1
-  }
+  },
+{
+  name: "Pullups",
+  description: "do pullups",
+  steps: 1000,
+  increments: 10
+
+},
+{
+  name: "something",
+  description: "do something",
+  steps: 121,
+  increments: 1
+
+},
+{
+  name: "something more",
+  description: "do something",
+  steps: 121,
+  increments: 1
+
+}
+
 ]
 
 const typeDefs = gql`
