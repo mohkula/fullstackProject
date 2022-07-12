@@ -1,14 +1,54 @@
 
-import { Pressable,  View } from 'react-native';
+import { Pressable,  View, StyleSheet } from 'react-native';
 import { useNavigate } from "react-router-native";
 
+import theme from '../../theme';
 import useGoals from '../hooks/useGoals';
 import Text from './Text';
-import GoalCounter from './GoalCounter';
+
+import GoalCounterList from './GoalCounterList';
 const Home = () => {
+
+  const styles = StyleSheet.create({
+
+    container: {
+      backgroundColor: 'white',
+      flexGrow: 1,
+      flexShrink: 1,
+    },
+  flexItemA: {
+          
+    flexDirection: 'column',
+    
+
+    
+  },
+});
 
 
   const { data } = useGoals();
+
+  const dataView = () => {
+
+
+if(data){
+return(
+  <View style={styles.flexItemA}>
+    
+
+   <GoalCounterList goals={data}/>        
+
+
+ 
+        </View>
+)
+}
+return (
+<Text color='primary'> loading...</Text>
+
+)
+
+}
 
   
   
@@ -17,34 +57,21 @@ const navigate = useNavigate()
     const onPress = () => {
 navigate("/newGoal")
     }
-    return (
-        <View>
-          
-         
-         {data ? <GoalCounter name={data.allGoals[0].name}
-          increments={data.allGoals[0].increments} 
-          steps={data.allGoals[0].steps} /> : null   }
+    return (<View style={styles.container}>
 
+<Text color= 'primary' style={{ textAlign: "center" }}>
+   Home page
+</Text>
 
-
-  
-
-          <Text color= 'primary' style={{ textAlign: "center" }}> Home page</Text>
-  
-          
-          <Pressable onPress={onPress} >
-  
-          </Pressable>
-
-  
-         
-         
-          <View>
-          
-        </View>
-  
-        </View>
         
+<View >
+
+  {dataView()}
+
+  </View>    
+
+        
+  </View>
       );
 }
 

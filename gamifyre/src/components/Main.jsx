@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 const Main = () => {
 
     return (
-      <View>
+      <View style={styles.container}>
         
         <TopBar />
 

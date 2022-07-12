@@ -1,5 +1,5 @@
 
-import { Pressable, StyleSheet, View, Button } from "react-native";
+import {  StyleSheet, View, Button } from "react-native";
 
 import Text from "./Text";
 
@@ -8,20 +8,31 @@ import { useState } from "react";
 
 import theme from "../../theme";
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor: theme.colors.primary,
-      width: 400,
-      height: 100,
-      
-       flexDirection: 'row',
-       justifyContent: 'space-between',
-       paddingTop: 10,
-    },
+   
+    flexContainer: {
+        width: 380,
+        height: 200,
+        
+         flexDirection: 'row',
+         justifyContent: 'space-between',
+         paddingTop: 10,
+         paddingBottom: 10,
+         backgroundColor: theme.colors.primary
 
+         
+         
+       },
+
+    flexItemA: {
+          
+        flexDirection: 'column',
+
+        
+      },
     flexColumn: {
         flexDirection: 'column',
-        justifyContent: 'space-around',
- 
+        justifyContent: 'space-between',
+
 
     },
 
@@ -35,16 +46,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
       },
 
-    box: {
-        position: 'absolute',
-        top: 40,
-        left: 40,
-        width: 100,
-        height: 100,
-        backgroundColor: 'red'
-      },
-    
-
     
    
   });
@@ -53,20 +54,19 @@ const styles = StyleSheet.create({
 const GoalCounter = (props) => {
     const [count, setCount] = useState(0)
 
-
     
     return (
     
-    <View style={styles.box}>
+    <View style={styles.flexItemA}>
 
-<View style={styles.container}>
+<View style={styles.flexContainer}>
 
-<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increments)}>
+
+<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increments)}>
 
 </Button>
 
-
-<View style={styles.flexColumn}> 
+<View style={styles.flexItemA}> 
 
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
@@ -75,7 +75,7 @@ const GoalCounter = (props) => {
 </View>
 
 
-<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increments)}>
+<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increments)}>
 
 </Button>
 
