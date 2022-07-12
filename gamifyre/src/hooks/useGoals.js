@@ -10,7 +10,6 @@ const useGoals = () => {
          fetchPolicy: 'cache-and-network',
      })
 
-console.log(data)
      return {data, ...rest}
 
 

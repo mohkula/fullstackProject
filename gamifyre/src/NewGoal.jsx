@@ -28,7 +28,6 @@ const NewGoal = () => {
 const navigate = useNavigate() 
   
     const onSubmit = (values) => {
-      console.log(values)
       navigate('/')
           
       

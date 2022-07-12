@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
 const GoalCounter = (props) => {
     const [count, setCount] = useState(0)
 
+
     
     return (
     
@@ -60,20 +61,21 @@ const GoalCounter = (props) => {
 
 <View style={styles.container}>
 
-<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increment)}>
+<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increments)}>
 
 </Button>
 
+
 <View style={styles.flexColumn}> 
 
-<Text color = 'primary'> Name</Text>
-<ProgressBar progress={count}/>
+<Text color = 'primary'> {props.name}</Text>
+<ProgressBar progress={count} steps={props.steps}/>
 
 
 </View>
 
 
-<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increment)}>
+<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increments)}>
 
 </Button>
 

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-native";
 import useGoals from '../hooks/useGoals';
 import Text from './Text';
 import GoalCounter from './GoalCounter';
-const Home = (props) => {
+const Home = () => {
 
 
   const { data } = useGoals();
@@ -21,11 +21,18 @@ navigate("/newGoal")
         <View>
           
          
-         {data ? <Text color= 'primary' > {data.allGoals[0].name}</Text> : null}
+         {data ? <GoalCounter name={data.allGoals[0].name}
+          increments={data.allGoals[0].increments} 
+          steps={data.allGoals[0].steps} /> : null   }
+
+
+
+  
+
           <Text color= 'primary' style={{ textAlign: "center" }}> Home page</Text>
   
+          
           <Pressable onPress={onPress} >
-          <Text color= 'primary'> Create a new goal</Text>
   
           </Pressable>
 
@@ -34,7 +41,6 @@ navigate("/newGoal")
          
           <View>
           
-{props.name ? <GoalCounter increment = {props.increment}/> : null}
         </View>
   
         </View>

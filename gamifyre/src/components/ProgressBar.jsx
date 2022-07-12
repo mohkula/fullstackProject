@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     progressBar: {
         height: 20,
         flexDirection: 'row',
-        width: '100%',
+     width: 150,
         backgroundColor: 'white',
         borderColor: '#000',
         borderWidth: 2,
@@ -38,10 +38,9 @@ const styles = StyleSheet.create({
 
    });
 
-const ProgressBar = ({progress}) => {
+const ProgressBar = (props) => {
 
-    const width = progress
-
+    
 
 return(
 
@@ -50,10 +49,11 @@ return(
 
 
 <View style={styles.progressBar}>
-<Animated.View style={[styles.progressBarFill, {width: width}]} /> 
+<Animated.View style={[styles.progressBarFill, {width: Math.floor((props.progress / props.steps) * 150)}]} /> 
 </View>
 
-    <Text color = 'primary'> {width}%</Text>
+    <Text color = 'primary'> {props.progress} / {props.steps}</Text>
+    <Text color = 'primary'>  {Math.floor((props.progress / props.steps) * 100)} %   </Text>
 
 </View>
     
