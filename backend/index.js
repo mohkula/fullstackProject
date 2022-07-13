@@ -1,5 +1,27 @@
 const { ApolloServer, gql } = require('apollo-server')
 
+const mongoose = require('mongoose')
+
+
+const typeDefs = require('./src/graphQl/typedefs')
+const resolvers = require('./src/graphQl/resolvers')
+
+const Goal = require('./src/models/Goal')
+
+const MONGODB_URI = `mongodb+srv://fullstack:salainen@cluster0.bgklv.mongodb.net/gamiFyre?retryWrites=true&w=majority`
+
+console.log('connecting to', MONGODB_URI)
+
+mongoose.connect(MONGODB_URI)
+  .then(() => {
+    console.log('connected to MongoDB')
+  })
+  .catch((error) => {
+    console.log('error connection to MongoDB:', error.message)
+  })
+
+
+
 let goals = [
   {
     name: "Pushups",
@@ -31,29 +53,9 @@ let goals = [
 
 ]
 
-const typeDefs = gql`
-  type Goal {
-    name: String!
-    description: String
-    steps: Int!
-    increments: Int!
-  }
 
-  type Query {
-    goalCount: Int!
-    allGoals: [Goal!]!
-    findGoal(name: String!): Goal
-  }
-`
 
-const resolvers = {
-  Query: {
-    goalCount: () => goals.length,
-    allGoals: () => goals,
-    findGoal: (root, args) =>
-      goals.find(p => p.name === args.name)
-  }
-}
+
 
 const server = new ApolloServer({
   typeDefs,
