@@ -1,5 +1,6 @@
 const Goal = require('../models/Goal')
 const User = require('../models/User')
+
 const resolvers = {
     Query: {
       goalCount: () => Goal.collection.countDocuments(),
@@ -25,26 +26,22 @@ const resolvers = {
             try{  await newGoal.save()
             }
             catch (error) {
-              throw new UserInputError(error.message, {
-                invalidArgs: args,
-              })
+              console.log(error)
             }
 
             return newGoal
         },
 
-        addUser: async(root, args) => {
+        createUser: async(root, args) => {
         
         const user = new User({...args})
         try {
-          await User.save()
+          await user.save()
 
         
 
       } catch (error) {
-        throw new UserInputError(error.message, {
-          invalidArgs: args,
-        })
+        console.log(error)
       
       }
        

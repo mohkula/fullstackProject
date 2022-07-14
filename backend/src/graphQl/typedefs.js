@@ -9,6 +9,14 @@ const typeDefs = gql`
     increments: Int!
   }
 
+  type User {
+    username: String!
+    password: String!
+    
+  }
+
+
+
   type Query {
     goalCount: Int!
     allGoals: [Goal!]!
@@ -23,6 +31,10 @@ const typeDefs = gql`
       increments: Int!
      
     ): Goal
+
+
+    createUser(username: String!
+      password: String!): User
 
     }
 `
