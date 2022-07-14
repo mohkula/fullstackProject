@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-native';
 import TopBar from './TopBar';
 import theme from '../../theme';
 
-import NewGoal from '../NewGoal';
+import NewGoal from './NewGoal';
 import Home from './Home';
 
 const styles = StyleSheet.create({

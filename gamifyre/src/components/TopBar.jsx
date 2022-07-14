@@ -1,4 +1,6 @@
 import { ScrollView, View,StyleSheet, Pressable } from "react-native";
+import { Link } from 'react-router-native';
+
 import Constants from 'expo-constants';
 
 import Text from "./Text";
@@ -37,7 +39,7 @@ const TopBar =  () => {
          <View style={styles.container}>
   
   <Text > Home</Text>
- 
+ <Link to = '/newGoal'><Text > New goal</Text></Link>
 
   </View>
           
