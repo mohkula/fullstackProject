@@ -1,5 +1,5 @@
 const Goal = require('../models/Goal')
-
+const User = require('../models/User')
 const resolvers = {
     Query: {
       goalCount: () => Goal.collection.countDocuments(),
@@ -31,8 +31,27 @@ const resolvers = {
             }
 
             return newGoal
-        }
+        },
+
+        addUser: async(root, args) => {
+        
+        const user = new User({...args})
+        try {
+          await User.save()
+
+        
+
+      } catch (error) {
+        throw new UserInputError(error.message, {
+          invalidArgs: args,
+        })
+      
+      }
+       
+      return user
     }
   }
+
+}
 
   module.exports = resolvers
