@@ -62,7 +62,14 @@ const GoalCounter = (props) => {
 <View style={styles.flexContainer}>
 
 
-<Button style={styles.circle} title='-' onPress={() => setCount(count -props.increments)}>
+<Button style={styles.circle} title='-' onPress={() => {
+ count - props.increments >= 0 ? setCount(count -props.increments)
+ :
+ null
+ 
+}
+
+}>
 
 </Button>
 
@@ -75,7 +82,12 @@ const GoalCounter = (props) => {
 </View>
 
 
-<Button style={styles.circle} title='+' onPress={() => setCount(count +props.increments)}>
+<Button style={styles.circle} title='+' onPress={() =>{
+ count + props.increments <= props.steps ? setCount(count + props.increments)
+ :
+ null
+}
+}>
 
 </Button>
 
