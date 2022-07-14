@@ -21,3 +21,13 @@ mutation createGoal($name: String!, $description: String,
      }
 
 `
+
+export const CREATE_USER = gql`
+mutation newUser($username: String!, $password: String! ) {
+  createUser(username: $username, password: $password) {
+    username
+    
+  }
+}
+`
+

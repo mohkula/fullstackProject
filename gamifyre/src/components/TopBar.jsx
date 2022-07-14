@@ -38,8 +38,10 @@ const TopBar =  () => {
   
          <View style={styles.container}>
   
-  <Text > Home</Text>
+         <Link to = '/'><Text > Home</Text></Link>
+
  <Link to = '/newGoal'><Text > New goal</Text></Link>
+ <Link to = '/signUp'><Text > Sign up</Text></Link>
 
   </View>
           

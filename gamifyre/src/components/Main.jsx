@@ -3,6 +3,7 @@ import {  StyleSheet, View } from 'react-native';
 import { Route, Routes } from 'react-router-native';
 
 
+import SignUp from './Signup';
 import TopBar from './TopBar';
 import theme from '../../theme';
 
@@ -27,6 +28,8 @@ const Main = () => {
         <Routes>
        <Route path="/" element={<Home />} exact />
        <Route path="/newGoal" element={<NewGoal />} exact />
+       <Route path="/signUp" element={<SignUp/>} exact />
+
        </Routes>
        
 
