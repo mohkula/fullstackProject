@@ -13,9 +13,10 @@ const resolvers = {
 
         return returnedGoals
       }, 
-      
+
       me: (root, args, context) => {
-        return context.currentUser
+        console.log(context)
+        return context
       }
 
     },
