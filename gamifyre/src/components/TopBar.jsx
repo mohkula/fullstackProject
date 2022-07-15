@@ -1,6 +1,6 @@
-import { ScrollView, View,StyleSheet, Pressable } from "react-native";
+import { ScrollView, View,StyleSheet } from "react-native";
 import { Link } from 'react-router-native';
-
+import { useState } from "react";
 import Constants from 'expo-constants';
 
 import Text from "./Text";
@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   });
 
 const TopBar =  () => {
+
+  const [token, setToken] = useState(null)
+
     
   
     return (
@@ -40,8 +43,16 @@ const TopBar =  () => {
   
          <Link to = '/'><Text > Home</Text></Link>
 
- <Link to = '/newGoal'><Text > New goal</Text></Link>
+ 
+ 
+ {token ? <Link to = '/newGoal'><Text > New goal</Text></Link> 
+ :
+ <View style={styles.container}>  
  <Link to = '/signUp'><Text > Sign up</Text></Link>
+ <Link to = '/logIn'><Text >Log in</Text></Link>
+
+ </View>
+ }
 
   </View>
           
