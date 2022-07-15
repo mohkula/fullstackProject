@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-native";
 
 
 import * as yup from "yup";
+import { useApolloClient } from "@apollo/client";
 
 
 import useCreateGoal from "../hooks/useCreateGoal";
 import NewGoalForm from "./NewGoalForm";
-
 
 const initialValues = {
   name: "",
@@ -30,8 +30,9 @@ const validationSchema = yup.object().shape({
 const NewGoal = () => {
 const navigate = useNavigate() 
 const [createGoal, result] = useCreateGoal();
-
+const apolloClient = useApolloClient()
     const onSubmit = async (values) => {
+      
 
       let { name, description, steps, increments } = values;
 
@@ -44,6 +45,8 @@ try{
          steps,
         increments
       })
+      await apolloClient.resetStore()
+
     } catch (e) {
       console.log(e);
     }

@@ -41,7 +41,6 @@ useEffect(() => {
 }, [])
   
 
-console.log(authStorage.getAccessToken())
   const { data } = useGoals();
 
   const dataView = () => {
