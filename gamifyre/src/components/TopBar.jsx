@@ -1,36 +1,97 @@
-import { ScrollView, View,StyleSheet } from "react-native";
+import { ScrollView, View, Pressable,StyleSheet } from "react-native";
 import { Link } from 'react-router-native';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Constants from 'expo-constants';
 
+import { useApolloClient } from "@apollo/client";
+
+
+
+import useAuthStorage from "../hooks/useAuthStorage";
 import Text from "./Text";
 
 
 const styles = StyleSheet.create({
-    container: {
-      paddingTop: Constants.statusBarHeight , 
-      backgroundColor: '#24292e',
-      paddingBottom: Constants.statusBarHeight,
-      paddingLeft: Constants.statusBarHeight,
-   
-      flexDirection: 'row',
-      width: "100%",
-      display: "flex",
-  
-      paddingRight: Constants.statusBarHeight
-      
-      
-    },
-  
+  container: {
+    paddingTop: Constants.statusBarHeight , 
+    backgroundColor: '#24292e',
+    paddingBottom: Constants.statusBarHeight,
+    paddingLeft: Constants.statusBarHeight,
+ 
+    flexDirection: 'row',
+
+    width: "100%",
+    display: "flex",
+
+    paddingRight: Constants.statusBarHeight,
     
+
     
-   
-  });
+  },
+
+  
+  
+ 
+});
+
+
 
 const TopBar =  () => {
-
+const authStorage = useAuthStorage()
+const apolloClient = useApolloClient();
   const [token, setToken] = useState(null)
 
+
+const loggedView = () => {
+
+  const signOut = async () => {
+  
+  
+    await authStorage.removeAccessToken()
+    await apolloClient.resetStore()
+    setToken(null)
+   
+  
+  }
+
+  if(token){
+    return (
+      <View style={styles.container}>
+         <Link to = '/'><Text > Home </Text></Link>
+   <Pressable  onPress={signOut}>
+    
+    <Text > Sign out </Text> 
+    </Pressable>
+    <Link to = '/newGoal'><Text color='white' > New goal </Text></Link> 
+    </View>
+    )
+  }
+ 
+
+
+  return (
+    <View style={styles.container}>
+       <Link to = '/'><Text > Home </Text></Link>
+
+    <Link to = '/signUp'><Text > Sign up </Text></Link>
+    <Link to = '/logIn'><Text > Log in </Text></Link>
+    </View>
+  )
+}
+
+  
+
+
+  useEffect(() => {
+
+    const getToken = async () => {
+      const token = await authStorage.getAccessToken()
+     setToken(token)
+    }
+    getToken()
+  
+   
+  }, [])
     
   
     return (
@@ -41,18 +102,17 @@ const TopBar =  () => {
   
          <View style={styles.container}>
   
-         <Link to = '/'><Text > Home</Text></Link>
+        
 
  
  
- {token ? <Link to = '/newGoal'><Text > New goal</Text></Link> 
- :
- <View style={styles.container}>  
- <Link to = '/signUp'><Text > Sign up</Text></Link>
- <Link to = '/logIn'><Text >Log in</Text></Link>
+ { loggedView()}
+ 
 
- </View>
- }
+
+
+ 
+ 
 
   </View>
           
