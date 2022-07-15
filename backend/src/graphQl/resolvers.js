@@ -1,6 +1,10 @@
 const Goal = require('../models/Goal')
 const User = require('../models/User')
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
 
+
+const {UserInputError} = require('apollo-server')
 const resolvers = {
     Query: {
       goalCount: () => Goal.collection.countDocuments(),
@@ -10,7 +14,13 @@ const resolvers = {
         return returnedGoals
       }, 
       
+      me: (root, args, context) => {
+        return context.currentUser
+      }
+
     },
+
+
 
     Mutation: {
         addGoal: async(root, args) => {
@@ -46,7 +56,22 @@ const resolvers = {
       }
        
       return user
-    }
+    },
+
+    login: async (root, args) => {
+      const user = await User.findOne({ username: args.username })
+  
+      if ( !user || args.password !== user.password ) {
+        throw new UserInputError("wrong credentials")
+      }
+  
+      const userForToken = {
+        username: user.username,
+        id: user._id,
+      }
+  
+      return { value: jwt.sign(userForToken, JWT_SECRET) }
+    },
   }
 
 }

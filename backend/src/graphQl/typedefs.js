@@ -15,12 +15,17 @@ const typeDefs = gql`
     
   }
 
+  type Token {
+    value: String!
+  }
+
 
 
   type Query {
     goalCount: Int!
     allGoals: [Goal!]!
     findGoal(name: String!): Goal
+    me: User
   }
 
   type Mutation {
@@ -35,6 +40,12 @@ const typeDefs = gql`
 
     createUser(username: String!
       password: String!): User
+
+      login(
+        username: String!
+        password: String!
+      ): Token
+
 
     }
 `
