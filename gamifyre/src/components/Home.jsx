@@ -11,13 +11,15 @@ const styles = StyleSheet.create({
 
   container: {
     backgroundColor: 'white',
+
     flexGrow: 1,
     flexShrink: 1,
   },
 flexItemA: {
         
   flexDirection: 'column',
-  
+
+    paddingBottom: 222
 
   
 },
