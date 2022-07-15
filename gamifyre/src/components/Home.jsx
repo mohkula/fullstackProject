@@ -80,11 +80,8 @@ const loggedView = () => {
 
   
   
-const navigate = useNavigate()
 
-    const onPress = () => {
-navigate("/newGoal")
-    }
+    
     return (<View style={styles.container}>
 
 <Text fontWeight='bold' color= 'primary' style={{ textAlign: "center" }}>
