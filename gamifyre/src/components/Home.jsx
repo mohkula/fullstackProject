@@ -41,34 +41,40 @@ useEffect(() => {
 }, [])
   
 
-  const { data } = useGoals();
+const { data } = useGoals();
+const loggedView = () => {
 
-  const dataView = () => {
-
-
-if(data){
-return(
-  <View style={styles.flexItemA}>
+  if(token){
+    return(
+      <View style={styles.flexItemA}>
+        
+    <Text color='primary'>Welcome!</Text>
+   
+    {data ? <GoalCounterList goals={data}/>
+    :
+    <Text color='primary'> loading...</Text>
+    }
     
-{token ? <Text color='primary'>Welcome!</Text>
-:
-null
+            </View>
+    )
+    }
+    return(
+
+      <Text color='primary'> Log in to view or create goals</Text>
+
+    )
+   
+
+
 }
-   <GoalCounterList goals={data}/>        
-
-
- 
-        </View>
-)
-}
-return (
-
   
-<Text color='primary'> loading...</Text>
 
-)
 
-}
+
+
+
+
+
 
   
   
@@ -79,14 +85,14 @@ navigate("/newGoal")
     }
     return (<View style={styles.container}>
 
-<Text color= 'primary' style={{ textAlign: "center" }}>
+<Text fontWeight='bold' color= 'primary' style={{ textAlign: "center" }}>
    Home page
 </Text>
 
         
 <View >
 
-  {dataView()}
+  {loggedView()}
 
   </View>    
 
