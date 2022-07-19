@@ -17,6 +17,11 @@ const schema = new mongoose.Schema({
     type: Number,
     required: true  
   },
+
+  progress: {
+    type: Number,
+    required: true
+  }
 })
 
   module.exports = mongoose.model('Goal', schema)
