@@ -12,6 +12,12 @@ const schema = new mongoose.Schema({
     required: true,
     minlength: 5
   },
+  goals: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
 
  
  
