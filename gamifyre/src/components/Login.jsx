@@ -32,8 +32,10 @@ const Login = () => {
 
     try {
       await signIn({ username, password });
-      await apolloClient.resetStore()
+    
       navigate("/")
+      await apolloClient.resetStore()
+
     } catch (e) {
       console.log(e);
     }

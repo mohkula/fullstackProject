@@ -15,8 +15,8 @@ const resolvers = {
       }, 
 
       me: (root, args, context) => {
-        console.log(context)
-        return context
+        console.log(context.currentUser.username)
+        return context.currentUser
       }
 
     },
@@ -24,7 +24,13 @@ const resolvers = {
 
 
     Mutation: {
-        addGoal: async(root, args) => {
+        addGoal: async(root, args, context) => {
+
+          const currentUser = context.currentUser
+
+          if (!currentUser) {
+            throw new AuthenticationError("not authenticated")
+          }
 
             const newGoal = new Goal({
                 name: args.name,
@@ -33,12 +39,19 @@ const resolvers = {
                 increments: args.increments
             })
 
+            
 
-            try{  await newGoal.save()
+
+            try{ 
+               await newGoal.save()
+              currentUser.goals = currentUser.goals.concat(newGoal)
+              await currentUser.save()
             }
             catch (error) {
               console.log(error)
             }
+
+           
 
             return newGoal
         },

@@ -7,11 +7,13 @@ const typeDefs = gql`
     description: String
     steps: Int!
     increments: Int!
+    progress: Int!
   }
 
   type User {
     username: String!
     password: String!
+    goals: [Goal]!
     
   }
 

@@ -3,7 +3,9 @@ import { Link } from 'react-router-native';
 import { useState, useEffect } from "react";
 import Constants from 'expo-constants';
 
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient, useQuery } from "@apollo/client";
+
+import { ME } from "../graphql/queries";
 
 
 
@@ -37,6 +39,19 @@ const styles = StyleSheet.create({
 
 
 const TopBar =  () => {
+
+  let authUser = null;
+
+  const { data } = useQuery(ME, {
+    fetchPolicy: "cache-and-network",
+  });
+
+  if (data) {
+    console.log(data.me);
+    authUser = data.me;
+  }
+
+
 const authStorage = useAuthStorage()
 const apolloClient = useApolloClient();
   const [token, setToken] = useState(null)
@@ -54,7 +69,7 @@ const loggedView = () => {
   
   }
 
-  if(token){
+  if(authUser){
     return (
       <View style={styles.container}>
          <Link to = '/'><Text > Home </Text></Link>
