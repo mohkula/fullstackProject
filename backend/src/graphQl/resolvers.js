@@ -15,7 +15,6 @@ const resolvers = {
       }, 
 
       me: (root, args, context) => {
-        console.log(context.currentUser.username)
         return context.currentUser
       }
 
@@ -36,7 +35,8 @@ const resolvers = {
                 name: args.name,
                 description: args.description,
                 steps: args.steps,
-                increments: args.increments
+                increments: args.increments,
+                progress: args.progress
             })
 
             
@@ -86,6 +86,30 @@ const resolvers = {
   
       return { value: jwt.sign(userForToken, JWT_SECRET) }
     },
+
+    editGoal: async(root, args, context) => {
+
+
+      console.log(args)
+      const currentUser = context.currentUser
+
+        if (!currentUser) {
+          throw new AuthenticationError("not authenticated")
+        }
+
+        const goals = await Goal.find({})
+
+        const goalToEdit = goals.find(g => g.name === args.name)
+        const updatetGoal = {name: goalToEdit.name,
+          description: goalToEdit.description,
+          steps: goalToEdit.steps,
+          increments: goalToEdit.increments,
+          progress: args.setProgress
+          }
+          await Goal.findByIdAndUpdate(goalToEdit.id,updatetGoal )
+          
+          return updatedGoal
+    }
   }
 
 }

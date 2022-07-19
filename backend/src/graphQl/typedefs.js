@@ -8,12 +8,14 @@ const typeDefs = gql`
     steps: Int!
     increments: Int!
     progress: Int!
+    id: ID!
   }
 
   type User {
     username: String!
     password: String!
     goals: [Goal]!
+    id: ID!
     
   }
 
@@ -36,6 +38,7 @@ const typeDefs = gql`
       description: String
       steps: Int!
       increments: Int!
+      progress: Int!
      
     ): Goal
 
@@ -47,6 +50,13 @@ const typeDefs = gql`
         username: String!
         password: String!
       ): Token
+
+      editGoal(
+        name: String!
+        setProgress: Int!
+      ): Goal
+
+
 
 
     }
