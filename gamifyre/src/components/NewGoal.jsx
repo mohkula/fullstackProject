@@ -14,7 +14,8 @@ const initialValues = {
   name: "",
   description: "",
   steps: 0,
-  increments: 0
+  increments: 0,
+  
 };
 
 const validationSchema = yup.object().shape({
@@ -35,7 +36,6 @@ const apolloClient = useApolloClient()
       
 
       let { name, description, steps, increments } = values;
-
       steps = Number(steps)
       increments = Number(increments)
 try{
@@ -43,7 +43,7 @@ try{
         name, 
         description,
          steps,
-        increments
+        increments,
       })
       await apolloClient.resetStore()
 

@@ -12,7 +12,8 @@ const useCreateGoal = () => {
             name: name,
             description: description,
             steps: steps,
-            increments: increments
+            increments: increments,
+            progress: 0
         },
     })
 
