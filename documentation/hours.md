@@ -10,4 +10,5 @@
 |13.7.2022|1|  Configured mongodb and modified the typedefs and resolvers accordingly. Modified some hooks in the frontend |
 |14.7.2022|1,5|Added signup for user creation. Goal creation form now saves to backend. Made tweaks to progress bar |
 | 15.8.2022| 2 | |
-| total   | 13   | | 
+| 19.8.2022| 2,5 |Modifications to Goal and User models. Added functionality to save the progress of goals to backend |
+| total   | 15,5   | | 
