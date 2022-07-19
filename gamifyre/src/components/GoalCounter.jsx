@@ -1,12 +1,80 @@
 
-import {  StyleSheet, View, Button } from "react-native";
+import {  StyleSheet, View, Pressable } from "react-native";
 
 import Text from "./Text";
 
 import ProgressBar from "./ProgressBar";
 import { useState } from "react";
 
+
 import theme from "../../theme";
+
+
+  
+const GoalCounter = (props) => {
+
+    
+    const [count, setCount] = useState(0)
+
+
+const increaseCount = () => {
+if(count + props.increments <= props.steps){
+    setCount(count + props.increments)
+    props.setProgress(count + props.increments, props.name)
+}
+}
+
+const decreaseCount = () => {
+    if(count - props.increments >= 0){
+        setCount(count - props.increments)
+        console.log(props.name)
+        props.setProgress(count - props.increments, props.name)
+    }
+    
+}
+
+    
+    
+    return (
+    
+    <View style={styles.flexItemA}>
+
+<View style={styles.flexContainer}>
+
+
+<Pressable style={styles.circle} 
+ onPress={decreaseCount
+}>
+    <Text color ='primary'> - </Text>
+
+</Pressable>
+
+<View style={styles.flexItemA}> 
+
+<Text color = 'primary'> {props.name}</Text>
+<ProgressBar progress={count} steps={props.steps}/>
+
+
+</View>
+
+
+<Pressable style={styles.circle} 
+ onPress={ increaseCount
+ 
+}
+
+>
+    <Text color ='primary'> + </Text>
+
+</Pressable>
+
+
+</View>
+
+
+    </View>)
+}
+
 const styles = StyleSheet.create({
    
     flexContainer: {
@@ -49,52 +117,5 @@ const styles = StyleSheet.create({
     
    
   });
-
-  
-const GoalCounter = (props) => {
-    const [count, setCount] = useState(0)
-
-    
-    return (
-    
-    <View style={styles.flexItemA}>
-
-<View style={styles.flexContainer}>
-
-
-<Button style={styles.circle} title='-' onPress={() => {
- count - props.increments >= 0 ? setCount(count -props.increments)
- :
- null
- 
-}
-
-}>
-
-</Button>
-
-<View style={styles.flexItemA}> 
-
-<Text color = 'primary'> {props.name}</Text>
-<ProgressBar progress={count} steps={props.steps}/>
-
-
-</View>
-
-
-<Button style={styles.circle} title='+' onPress={() =>{
- count + props.increments <= props.steps ? setCount(count + props.increments)
- :
- null
-}
-}>
-
-</Button>
-
-</View>
-
-
-    </View>)
-}
 
 export default GoalCounter

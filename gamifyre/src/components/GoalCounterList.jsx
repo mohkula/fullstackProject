@@ -1,25 +1,12 @@
 import { StyleSheet, View, FlatList } from "react-native";
 
 
-
-import Text from "./Text";
-import ProgressBar from "./ProgressBar";
-import GoalCounter from "./GoalCounter";
-
-
-const styles = StyleSheet.create({
-    
-    separator: {
-        height: 100,
-      },
-    
-  });
-
   const ItemSeparator = () => <View style={styles.separator} />;
 
-  const GoalCounterList = ({goals}) => {
+  const GoalCounterList = ({goals, setProgress}) => {
 
 
+    
    
 
 
@@ -35,7 +22,8 @@ const styles = StyleSheet.create({
           <GoalCounter name={item.name}
            steps={item.steps} 
            increments = {item.increments} 
-           description = {item.description}/>
+           description = {item.description}
+           setProgress= {setProgress}/>
         )}
         keyExtractor={(item) => item.name}
         
@@ -45,4 +33,15 @@ const styles = StyleSheet.create({
 
   }
 
+
+  import GoalCounter from "./GoalCounter";
+
+
+const styles = StyleSheet.create({
+    
+    separator: {
+        height: 100,
+      },
+    
+  });
   export default GoalCounterList

@@ -40,3 +40,14 @@ export const LOGIN = gql`
     }
   }
 `
+
+export const EDIT_GOAL = gql`
+
+mutation editGoal($name: String!, $setProgress: Int!){
+
+  editGoal(name: $name, setProgress: $setProgress)  {
+    name
+    progress
+  }
+}
+`

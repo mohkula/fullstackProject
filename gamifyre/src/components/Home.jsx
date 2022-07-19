@@ -1,31 +1,35 @@
 
 import {   View, StyleSheet } from 'react-native';
-import { useNavigate } from "react-router-native";
 import { useState, useEffect } from 'react';
 import useGoals from '../hooks/useGoals';
 import Text from './Text';
 
 import GoalCounterList from './GoalCounterList';
 import useAuthStorage from  '../hooks/useAuthStorage'
-const styles = StyleSheet.create({
+import useEditGoal from '../hooks/useEditGoal';
 
-  container: {
-    backgroundColor: 'white',
 
-    flexGrow: 1,
-    flexShrink: 1,
-  },
-flexItemA: {
-        
-  flexDirection: 'column',
 
-    paddingBottom: 222
 
-  
-},
-});
 
 const Home = () => {
+
+  const [editGoal, result] = useEditGoal();
+  const setProgress = async(setProgress,name) =>{
+
+    console.log(name)
+    console.log(setProgress)
+    
+    try{
+        const {data} = await editGoal({
+         name,
+         setProgress
+        })
+  
+      } catch (e) {
+        console.log(e);
+      }
+  }
 
   const [token, setToken] = useState(null)
 
@@ -43,7 +47,12 @@ useEffect(() => {
 }, [])
   
 
+
+
 const { data } = useGoals();
+
+
+
 const loggedView = () => {
 
   if(token){
@@ -52,7 +61,7 @@ const loggedView = () => {
         
     <Text color='primary'>Welcome!</Text>
    
-    {data ? <GoalCounterList goals={data}/>
+    {data ? <GoalCounterList goals={data} setProgress={setProgress}/>
     :
     <Text color='primary'> loading...</Text>
     }
@@ -99,5 +108,24 @@ const loggedView = () => {
   </View>
       );
 }
+
+
+const styles = StyleSheet.create({
+
+  container: {
+    backgroundColor: 'white',
+
+    flexGrow: 1,
+    flexShrink: 1,
+  },
+flexItemA: {
+        
+  flexDirection: 'column',
+
+    paddingBottom: 222
+
+  
+},
+});
 
 export default Home
