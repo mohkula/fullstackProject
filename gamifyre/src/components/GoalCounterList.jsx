@@ -3,9 +3,9 @@ import { StyleSheet, View, FlatList } from "react-native";
 
   const ItemSeparator = () => <View style={styles.separator} />;
 
-  const GoalCounterList = ({goals, setProgress}) => {
+  const GoalCounterList = ({goals}) => {
 
-
+console.log(goals)
     
    
 
@@ -18,12 +18,13 @@ import { StyleSheet, View, FlatList } from "react-native";
         ItemSeparatorComponent={ItemSeparator}
 
         renderItem = {({item}) =>(
-      
+     
           <GoalCounter name={item.name}
            steps={item.steps} 
            increments = {item.increments} 
            description = {item.description}
-           setProgress= {setProgress}/>
+           progress = {item.progress}
+           />
         )}
         keyExtractor={(item) => item.name}
         

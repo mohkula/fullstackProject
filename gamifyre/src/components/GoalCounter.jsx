@@ -5,7 +5,7 @@ import Text from "./Text";
 
 import ProgressBar from "./ProgressBar";
 import { useState } from "react";
-
+import useEditGoal from "../hooks/useEditGoal";
 
 import theme from "../../theme";
 
@@ -13,14 +13,32 @@ import theme from "../../theme";
   
 const GoalCounter = (props) => {
 
+
+    const [editGoal, result] = useEditGoal();
+  const setProgress = async(setProgress,name) =>{
+
+ 
     
-    const [count, setCount] = useState(0)
+    try{
+        const {data} = await editGoal({
+         name,
+         setProgress
+        })
+  
+      } catch (e) {
+        console.log(e);
+      }
+  }
+console.log(props.progress)
+    
+    const [count, setCount] = useState(Number(props.progress))
 
 
 const increaseCount = () => {
 if(count + props.increments <= props.steps){
     setCount(count + props.increments)
-    props.setProgress(count + props.increments, props.name)
+    setProgress(count + props.increments, props.name)
+    
 }
 }
 
@@ -28,7 +46,7 @@ const decreaseCount = () => {
     if(count - props.increments >= 0){
         setCount(count - props.increments)
         console.log(props.name)
-        props.setProgress(count - props.increments, props.name)
+        setProgress(count - props.increments, props.name)
     }
     
 }

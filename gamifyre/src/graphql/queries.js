@@ -8,6 +8,7 @@ query {
       description
       steps
       increments
+      progress
       
     }
   } 

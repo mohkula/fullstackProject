@@ -14,22 +14,7 @@ import useEditGoal from '../hooks/useEditGoal';
 
 const Home = () => {
 
-  const [editGoal, result] = useEditGoal();
-  const setProgress = async(setProgress,name) =>{
-
-    console.log(name)
-    console.log(setProgress)
-    
-    try{
-        const {data} = await editGoal({
-         name,
-         setProgress
-        })
   
-      } catch (e) {
-        console.log(e);
-      }
-  }
 
   const [token, setToken] = useState(null)
 
@@ -61,7 +46,7 @@ const loggedView = () => {
         
     <Text color='primary'>Welcome!</Text>
    
-    {data ? <GoalCounterList goals={data} setProgress={setProgress}/>
+    {data ? <GoalCounterList goals={data}/>
     :
     <Text color='primary'> loading...</Text>
     }

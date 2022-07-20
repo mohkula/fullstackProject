@@ -99,13 +99,13 @@ const resolvers = {
         const goals = await Goal.find({})
 
         const goalToEdit = goals.find(g => g.name === args.name)
-        const updatetGoal = {name: goalToEdit.name,
+        const updatedGoal = {name: goalToEdit.name,
           description: goalToEdit.description,
           steps: goalToEdit.steps,
           increments: goalToEdit.increments,
           progress: args.setProgress
           }
-          await Goal.findByIdAndUpdate(goalToEdit.id,updatetGoal )
+          await Goal.findByIdAndUpdate(goalToEdit.id,updatedGoal )
           
           return updatedGoal
     }
