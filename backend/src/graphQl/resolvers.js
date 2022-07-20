@@ -90,7 +90,6 @@ const resolvers = {
     editGoal: async(root, args, context) => {
 
 
-      console.log(args)
       const currentUser = context.currentUser
 
         if (!currentUser) {
