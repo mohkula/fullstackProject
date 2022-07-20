@@ -11,4 +11,6 @@
 |14.7.2022|1,5|Added signup for user creation. Goal creation form now saves to backend. Made tweaks to progress bar |
 | 15.8.2022| 2 |Added login functionality, and made the homeview depening on wether the user is logged in or not|
 | 19.8.2022| 2,5 |Modifications to Goal and User models. Added functionality to save the progress of goals to backend |
-| total   | 15,5   | | 
+| 20.8.2022 |1 | The progress of loaded goals is now shown in the frontend. Some form validations to the newGoalForm |
+
+| total   | 16,5   | | 
