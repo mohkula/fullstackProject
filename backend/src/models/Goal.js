@@ -21,6 +21,13 @@ const schema = new mongoose.Schema({
   progress: {
     type: Number,
     required: true
+  },
+
+  madeBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    
   }
 })
 

@@ -15,7 +15,7 @@ const schema = new mongoose.Schema({
   goals: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Goal'
     }
   ],
 
