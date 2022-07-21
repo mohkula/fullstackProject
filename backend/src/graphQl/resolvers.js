@@ -108,6 +108,21 @@ const resolvers = {
           await Goal.findByIdAndUpdate(goalToEdit.id,updatedGoal )
           
           return updatedGoal
+    },
+
+    deleteGoal: async(root, args, context) => {
+
+      const currentUser = context.currentUser
+
+        if (!currentUser) {
+          throw new AuthenticationError("not authenticated")
+        }
+
+        const goals = await Goal.find({})
+
+        await Goal.findByIdAndDelete(args.id)
+
+        return args.id
     }
   }
 

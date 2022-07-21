@@ -56,6 +56,9 @@ const typeDefs = gql`
         setProgress: Int!
       ): Goal
 
+      deleteGoal(
+        id: ID!
+      ): ID
 
 
 
