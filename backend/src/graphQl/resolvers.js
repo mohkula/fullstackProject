@@ -3,6 +3,8 @@ const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
 
+const {AuthenticationError} = require('apollo-server')
+
 
 const {UserInputError} = require('apollo-server')
 const resolvers = {
@@ -36,7 +38,8 @@ const resolvers = {
                 description: args.description,
                 steps: args.steps,
                 increments: args.increments,
-                progress: args.progress
+                progress: args.progress,
+                madeBy: args.madeBy
             })
 
             

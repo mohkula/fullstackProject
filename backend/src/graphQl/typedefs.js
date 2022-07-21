@@ -9,6 +9,7 @@ const typeDefs = gql`
     increments: Int!
     progress: Int!
     id: ID!
+    madeBy: ID!
   }
 
   type User {
@@ -39,6 +40,7 @@ const typeDefs = gql`
       steps: Int!
       increments: Int!
       progress: Int!
+      madeBy: ID!
      
     ): Goal
 
