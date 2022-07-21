@@ -3,7 +3,8 @@ import {   View, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
 import useGoals from '../hooks/useGoals';
 import Text from './Text';
-
+import { ME } from '../graphql/queries';
+import { useQuery } from '@apollo/client';
 import GoalCounterList from './GoalCounterList';
 import useAuthStorage from  '../hooks/useAuthStorage'
 
@@ -13,8 +14,13 @@ import useAuthStorage from  '../hooks/useAuthStorage'
 
 const Home = () => {
 
-  
+  const { userData } = useQuery(ME, {
+    fetchPolicy: "cache-and-network",
+  });
 
+if(userData){
+  console.log(userData)
+}
   const [token, setToken] = useState(null)
 
 const authStorage = useAuthStorage()
@@ -43,7 +49,7 @@ const loggedView = () => {
     return(
       <View style={styles.flexItemA}>
         
-    <Text color='primary'>Welcome!</Text>
+    <Text color='primary'>Welcome! </Text>
    
     {data ? <GoalCounterList goals={data}/>
     :

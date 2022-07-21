@@ -13,7 +13,6 @@ import theme from "../../theme";
   
 const GoalCounter = (props) => {
 
-   console.log(props)
 
     const [editGoal, result] = useEditGoal();
     const [deleteGoal, res] = useDeleteGoal();
@@ -48,7 +47,6 @@ if(count + props.increments <= props.steps){
 const decreaseCount = () => {
     if(count - props.increments >= 0){
         setCount(count - props.increments)
-        console.log(props.name)
         setProgress(count - props.increments, props.name)
     }
     
@@ -56,7 +54,6 @@ const decreaseCount = () => {
 
 const removeGoal = async() =>{
 
-    console.log(props.id)
     try {
         await deleteGoal( props.id );
         
@@ -72,8 +69,8 @@ const removeGoal = async() =>{
 
 <View style={styles.flexContainer}>
 
-<Pressable style={styles.circle} onPress={removeGoal}>
-<Text color ='primary'> DELETE </Text>
+<Pressable style={styles.deleteCircle} onPress={removeGoal}>
+<Text color ='primary'> X </Text>
 
 
 </Pressable>
@@ -149,6 +146,15 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     backgroundColor: 'orange',
       },
+      deleteCircle: {
+        width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    borderRadius: 20,
+    backgroundColor: 'red',
+      }
 
     
    

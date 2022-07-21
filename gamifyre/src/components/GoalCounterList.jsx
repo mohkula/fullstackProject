@@ -5,10 +5,9 @@ import { StyleSheet, View, FlatList } from "react-native";
 
   const GoalCounterList = ({goals}) => {
 
-console.log(goals)
     
    
-
+//const usersGoals = goals.allGoals.filter(g => g.id =)
 
     return(
 
