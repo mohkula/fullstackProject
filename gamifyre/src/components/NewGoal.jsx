@@ -33,13 +33,15 @@ return true
   }),
   increments: yup.number().typeError('increments must be a number')
   .positive('increments must be positive')
+  .lessThan(yup.ref('steps'), "increments must be less than steps")
+  
+  .required('number of increments is required')
   .test('divisible', 'steps must be divisible by increments', 
   function(value){
 
     
 return helper % value === 0
   })
-  .required('number of increments is required')
 });
 
 const NewGoal = () => {
