@@ -1,5 +1,4 @@
 import { Formik } from "formik";
-import { View } from "react-native";
 import { useNavigate } from "react-router-native";
 
 

@@ -6,7 +6,6 @@ import Text from './Text';
 
 import GoalCounterList from './GoalCounterList';
 import useAuthStorage from  '../hooks/useAuthStorage'
-import useEditGoal from '../hooks/useEditGoal';
 
 
 

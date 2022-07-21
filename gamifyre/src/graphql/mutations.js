@@ -51,3 +51,14 @@ mutation editGoal($name: String!, $setProgress: Int!){
   }
 }
 `
+
+export const DELETE_GOAL = gql`
+
+mutation deleteGoal($id: ID!){
+
+  deleteGoal(id: $id )  
+  
+    
+  
+}
+`

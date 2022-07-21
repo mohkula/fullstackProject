@@ -24,6 +24,7 @@ console.log(goals)
            increments = {item.increments} 
            description = {item.description}
            progress = {item.progress}
+           id = {item.id}
            />
         )}
         keyExtractor={(item) => item.name}
