@@ -6,14 +6,16 @@ const useCreateGoal = () => {
 
     const [mutate, result] = useMutation(CREATE_GOAL)
 
-    const createGoal = async ({name, description, steps, increments}) => {
+    const createGoal = async ({name, description, steps, increments, madeBy}) => {
+        console.log(madeBy)
     mutate({
         variables: {
             name: name,
             description: description,
             steps: steps,
             increments: increments,
-            progress: 0
+            progress: 0,
+            madeBy: madeBy
         },
     })
 

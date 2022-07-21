@@ -1,13 +1,13 @@
 import { Formik } from "formik";
 import { useNavigate } from "react-router-native";
 
-
 import * as yup from "yup";
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient , useQuery} from "@apollo/client";
 
 
 import useCreateGoal from "../hooks/useCreateGoal";
 import NewGoalForm from "./NewGoalForm";
+import { ME } from "../graphql/queries";
 
 const initialValues = {
   name: "",
@@ -45,12 +45,22 @@ return helper % value === 0
 
 const NewGoal = () => {
 const navigate = useNavigate() 
+
 const [createGoal, result] = useCreateGoal();
+
 const apolloClient = useApolloClient()
+
+const { data } = useQuery(ME, {
+  fetchPolicy: "cache-and-network",
+});
+
+
+
     const onSubmit = async (values) => {
       
-
-      let { name, description, steps, increments } = values;
+     
+const madeBy = data.me.id
+      let { name, description, steps, increments,  } = values;
       steps = Number(steps)
       increments = Number(increments)
 try{
@@ -59,6 +69,8 @@ try{
         description,
          steps,
         increments,
+        madeBy
+
       })
       await apolloClient.resetStore()
 

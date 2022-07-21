@@ -5,13 +5,14 @@ import { gql } from '@apollo/client';
 
 export const CREATE_GOAL = gql`
 mutation createGoal($name: String!, $description: String,
-     $steps: Int!, $increments: Int!, $progress: Int!){
+     $steps: Int!, $increments: Int!, $progress: Int! $madeBy: ID!){
         addGoal(
             name: $name
             description: $description
             steps: $steps
             increments: $increments
             progress: $progress
+            madeBy: $madeBy
 
         ){
             name
