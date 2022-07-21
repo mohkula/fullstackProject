@@ -12,5 +12,5 @@
 | 15.8.2022| 2 |Added login functionality, and made the homeview depening on wether the user is logged in or not|
 | 19.8.2022| 2,5 |Modifications to Goal and User models. Added functionality to save the progress of goals to backend |
 | 20.8.2022 |1 | The progress of loaded goals is now shown in the frontend. Some form validations to the newGoalForm |
-
-| total   | 16,5   | | 
+| 21.8.2022 |1,5 | Form validation, deletion of goals added to front- and backend. Goals are now linked to the users who made them |
+| total   | 18   | | 
