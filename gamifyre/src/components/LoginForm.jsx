@@ -7,7 +7,7 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput name='username' placeholder="Username"/>
-      <FormikTextInput name='password' placeholder="Password"/>
+      <FormikTextInput secureTextEntry={true}  name='password' placeholder="Password"/>
       <Pressable style={styles.signinContainer} onPress={onSubmit}>
         <Text style={{ textAlign: 'center'}} color="white" fontWeight='bold' fontSize="subheading">Sign in</Text>
       </Pressable>

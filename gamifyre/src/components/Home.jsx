@@ -54,7 +54,7 @@ const loggedView = () => {
         
     <Text color='primary'>Welcome {user.username}! </Text>
    
-    {usersGoals ? <GoalCounterList goals={usersGoals}/>
+    {usersGoals  ? <GoalCounterList goals={usersGoals}/>
     :
     <Text color='primary'> loading...</Text>
     }

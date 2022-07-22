@@ -1,10 +1,14 @@
 import { Formik } from "formik";
 import { View } from "react-native";
+import { useState } from "react";
 import LoginForm from "./LoginForm";
 import * as yup from 'yup';
 import useSignIn from "../hooks/useSignIn";
 import { useNavigate } from "react-router-native";
 import { useApolloClient } from "@apollo/client";
+
+import Text from "./Text";
+
 const initialValues = {
   password: '',
   username: ''
@@ -13,16 +17,15 @@ const initialValues = {
 const validationSchema = yup.object().shape({
   username: yup
     .string()
-    .min(4, 'Username length must be atleast 4')
     .required('Username is required'),
   password: yup
     .string()
-    .min(6, 'Password length must be atleast 6')
     .required('Password is required'),
 });
 
 
 const Login = () => {
+  const [error, setError] = useState(null)
   const [signIn] = useSignIn()
   const navigate = useNavigate()
   const apolloClient = useApolloClient();
@@ -37,11 +40,18 @@ const Login = () => {
       await apolloClient.resetStore()
 
     } catch (e) {
+      setError("wrong credentials")
+      setTimeout(() => {
+        setError('')
+}, 10000)
       console.log(e);
     }
   };
 
   return <View>
+    <View>
+    <Text style={{ textAlign: 'center'}} color = 'error'>{error}</Text>
+    </View>
     <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}
 >
       {({ handleSubmit }) => <LoginForm onSubmit={handleSubmit} />}
