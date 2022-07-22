@@ -9,6 +9,7 @@ query {
       steps
       increments
       progress
+      madeBy
       id
       
     }

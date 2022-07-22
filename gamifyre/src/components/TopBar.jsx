@@ -13,28 +13,7 @@ import useAuthStorage from "../hooks/useAuthStorage";
 import Text from "./Text";
 
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Constants.statusBarHeight , 
-    backgroundColor: '#24292e',
-    paddingBottom: Constants.statusBarHeight,
-    paddingLeft: Constants.statusBarHeight,
- 
-    flexDirection: 'row',
 
-    width: "100%",
-    display: "flex",
-
-    paddingRight: Constants.statusBarHeight,
-    
-
-    
-  },
-
-  
-  
- 
-});
 
 
 
@@ -47,7 +26,6 @@ const TopBar =  () => {
   });
 
   if (data) {
-    console.log(data.me);
     authUser = data.me;
   }
 
@@ -139,4 +117,27 @@ const loggedView = () => {
   
   };
   
+  const styles = StyleSheet.create({
+    container: {
+      paddingTop: Constants.statusBarHeight , 
+      backgroundColor: '#24292e',
+      paddingBottom: Constants.statusBarHeight,
+      paddingLeft: Constants.statusBarHeight,
+   
+      flexDirection: 'row',
+  
+      width: "100%",
+      display: "flex",
+  
+      paddingRight: Constants.statusBarHeight,
+      
+  
+      
+    },
+  
+    
+    
+   
+  });
+
   export default TopBar;

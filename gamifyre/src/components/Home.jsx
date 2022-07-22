@@ -13,13 +13,14 @@ import useAuthStorage from  '../hooks/useAuthStorage'
 
 
 const Home = () => {
-
-  const { userData } = useQuery(ME, {
+let user = null
+  const { data } = useQuery(ME, {
     fetchPolicy: "cache-and-network",
   });
 
-if(userData){
-  console.log(userData)
+if(data){
+
+  user = data.me
 }
   const [token, setToken] = useState(null)
 
@@ -39,19 +40,21 @@ useEffect(() => {
 
 
 
-const { data } = useGoals();
-
-
+const  { goalData }  = useGoals();
+let usersGoals = null
+if(goalData && user){
+   usersGoals = goalData.allGoals.filter(goal => goal.madeBy === user.id)
+}
 
 const loggedView = () => {
 
-  if(token){
+  if(user){
     return(
       <View style={styles.flexItemA}>
         
-    <Text color='primary'>Welcome! </Text>
+    <Text color='primary'>Welcome {user.username}! </Text>
    
-    {data ? <GoalCounterList goals={data}/>
+    {usersGoals ? <GoalCounterList goals={usersGoals}/>
     :
     <Text color='primary'> loading...</Text>
     }

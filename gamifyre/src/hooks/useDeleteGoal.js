@@ -7,7 +7,6 @@ const useDeleteGoal = () => {
     const [mutate, result] = useMutation(DELETE_GOAL)
 
     const deleteGoal = async (id) => {
-        console.log(id)
     mutate({
         variables: {
             id: id

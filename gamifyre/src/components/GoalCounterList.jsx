@@ -5,15 +5,11 @@ import { StyleSheet, View, FlatList } from "react-native";
 
   const GoalCounterList = ({goals}) => {
 
-    
-   
-//const usersGoals = goals.allGoals.filter(g => g.id =)
-
     return(
 
 <View>
 <FlatList
-        data={goals.allGoals}
+        data={goals}
         ItemSeparatorComponent={ItemSeparator}
 
         renderItem = {({item}) =>(

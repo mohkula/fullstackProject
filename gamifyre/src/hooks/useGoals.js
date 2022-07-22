@@ -10,7 +10,9 @@ const useGoals = () => {
          fetchPolicy: 'cache-and-network',
      })
 
-     return {data, ...rest}
+     const goalData = data
+
+     return {goalData, ...rest}
 
 
 }
