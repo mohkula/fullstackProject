@@ -5,14 +5,22 @@ import { useQuery } from "@apollo/client";
 
 const useGoals = () => {
 
-    const { data, ...rest } =  useQuery(GET_GOALS, {
+const [query, result] = useQuery(GET_GOALS, {
         
-         fetchPolicy: 'cache-and-network',
-     })
+    fetchPolicy: 'cache-and-network',
+})
 
-     const goalData = data
+    const getGoals = async() => {
 
-     return {goalData, ...rest}
+        const { data, ...rest } =  
+        await query()
+        
+        return {data, ...rest}
+
+    }
+
+    return [getGoals, result]
+    
 
 
 }

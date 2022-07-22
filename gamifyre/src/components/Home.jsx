@@ -40,11 +40,10 @@ useEffect(() => {
 
 
 
-const  { goalData }  = useGoals();
-let usersGoals = null
-if(goalData && user){
-   usersGoals = goalData.allGoals.filter(goal => goal.madeBy === user.id)
-}
+
+
+
+
 
 const loggedView = () => {
 
@@ -54,10 +53,8 @@ const loggedView = () => {
         
     <Text color='primary'>Welcome {user.username}! </Text>
    
-    {usersGoals  ? <GoalCounterList goals={usersGoals}/>
-    :
-    <Text color='primary'> loading...</Text>
-    }
+       <GoalCounterList user={user}/>
+    
     
             </View>
     )

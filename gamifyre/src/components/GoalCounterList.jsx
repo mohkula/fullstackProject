@@ -1,20 +1,58 @@
 import { StyleSheet, View, FlatList } from "react-native";
+import { useState, useEffect } from "react";
+import { useApolloClient } from "@apollo/client";
+import useDeleteGoal from "../hooks/useDeleteGoal";
+import Text from "./Text";
 
+
+import useGoals from "../hooks/useGoals";
 
   const ItemSeparator = () => <View style={styles.separator} />;
 
-  const GoalCounterList = ({goals}) => {
+  const GoalCounterList = (props) => {
+
+    const apolloClient = useApolloClient()
+
+
+    const [deleteGoal, res] = useDeleteGoal();
+
+
+
+    const removeGoal = async() =>{
+
+      console.log("delete")
+      try {
+        await deleteGoal( props.id );
+        await apolloClient.resetStore()
+
+     } catch (e) {
+        console.log(e);
+      }
+
+    }
+
+
+const [goals, setGoals] = useState({})
+
+//const  [getGoals] =  useGoals();
+
+
+
+
+
+
 
     return(
 
 <View>
-<FlatList
+  <FlatList
         data={goals}
         ItemSeparatorComponent={ItemSeparator}
 
         renderItem = {({item}) =>(
      
           <GoalCounter name={item.name}
+          removeGoal = {removeGoal}
            steps={item.steps} 
            increments = {item.increments} 
            description = {item.description}
@@ -24,7 +62,11 @@ import { StyleSheet, View, FlatList } from "react-native";
         )}
         keyExtractor={(item) => item.name}
         
-      />
+      /> 
+    
+    
+    
+
       </View>
     )
 

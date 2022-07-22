@@ -6,16 +6,15 @@ import Text from "./Text";
 import ProgressBar from "./ProgressBar";
 import { useState } from "react";
 import useEditGoal from "../hooks/useEditGoal";
-import useDeleteGoal from "../hooks/useDeleteGoal";
 import theme from "../../theme";
-
 
   
 const GoalCounter = (props) => {
 
 
+
+
     const [editGoal, result] = useEditGoal();
-    const [deleteGoal, res] = useDeleteGoal();
 
 
   const setProgress = async(setProgress,name) =>{
@@ -52,15 +51,7 @@ const decreaseCount = () => {
     
 }
 
-const removeGoal = async() =>{
 
-    try {
-        await deleteGoal( props.id );
-        
-     } catch (e) {
-        console.log(e);
-      }
-}
     
     
     return (
@@ -69,7 +60,7 @@ const removeGoal = async() =>{
 
 <View style={styles.flexContainer}>
 
-<Pressable style={styles.deleteCircle} onPress={removeGoal}>
+<Pressable style={styles.deleteCircle} onPress={props.removeGoal}>
 <Text color ='primary'> X </Text>
 
 
