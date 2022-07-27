@@ -60,7 +60,7 @@ const decreaseCount = () => {
 
 <View style={styles.flexContainer}>
 
-<Pressable style={styles.deleteCircle} onPress={props.removeGoal}>
+<Pressable style={styles.deleteCircle} onPress={() => props.removeGoal(props.id)}>
 <Text color ='primary'> X </Text>
 
 
