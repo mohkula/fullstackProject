@@ -20,6 +20,7 @@ import useGoals from "../hooks/useGoals";
       try {
         await deleteGoal(id);
         await apolloClient.resetStore()
+        refetch()
 
      } catch (e) {
         console.log(e);
@@ -32,7 +33,7 @@ import useGoals from "../hooks/useGoals";
 
 
 
-const { goals } = useGoals()
+const { goals, refetch} = useGoals()
 
 
 

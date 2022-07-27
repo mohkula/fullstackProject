@@ -4,15 +4,16 @@ import { useQuery } from "@apollo/client";
 
 
 const useGoals = () => {
+    
 
-const {data, ...rest} = useQuery(GET_GOALS, {
+const {data, refetch, ...rest} = useQuery(GET_GOALS, {
         
     fetchPolicy: 'cache-and-network',
 })
 
 
 
-    return {goals:data, ...rest}
+    return {goals:data, refetch, ...rest}
     
 
 
