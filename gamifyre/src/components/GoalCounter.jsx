@@ -55,16 +55,18 @@ const decreaseCount = () => {
     
     
     return (
-    
-    <View style={styles.flexItemA}>
-
-<View style={styles.flexContainer}>
-
-<Pressable style={styles.deleteCircle} onPress={() => props.removeGoal(props.id)}>
+    <View style= {styles.container}>
+    <View style={styles.flexColumn}>
+    <Pressable style={styles.deleteCircle} onPress={() => props.removeGoal(props.id)}>
 <Text color ='primary'> X </Text>
 
 
 </Pressable>
+
+
+<View style={styles.flexContainer}>
+
+
 
 <Pressable style={styles.circle} 
  onPress={decreaseCount
@@ -73,7 +75,7 @@ const decreaseCount = () => {
 
 </Pressable>
 
-<View style={styles.flexItemA}> 
+<View style={styles.flexColumn}> 
 
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
@@ -96,34 +98,34 @@ const decreaseCount = () => {
 </View>
 
 
+    </View>
     </View>)
 }
 
 const styles = StyleSheet.create({
-   
-    flexContainer: {
-        width: 380,
+   container:{
+    backgroundColor: theme.colors.primary,
+    width: 400,
         height: 200,
+   },
+    flexContainer: {
+        
         
          flexDirection: 'row',
          justifyContent: 'space-between',
-         paddingTop: 10,
-         paddingBottom: 10,
-         backgroundColor: theme.colors.primary
+         padding: 10
+         
+         
 
          
          
        },
 
-    flexItemA: {
-          
-        flexDirection: 'column',
-
-        
-      },
+    
     flexColumn: {
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        padding: 10,
+        alignItems: 'center',
 
 
     },
