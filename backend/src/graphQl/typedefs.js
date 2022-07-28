@@ -54,8 +54,15 @@ const typeDefs = gql`
       ): Token
 
       editGoal(
-        name: String!
-        setProgress: Int!
+
+        id: ID!
+        name: String
+        setProgress: Int
+        description: String
+        steps: Int
+        increments: Int
+        
+
       ): Goal
 
       deleteGoal(

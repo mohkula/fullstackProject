@@ -99,14 +99,16 @@ const resolvers = {
           throw new AuthenticationError("not authenticated")
         }
 
-        const goals = await Goal.find({})
+        
 
-        const goalToEdit = goals.find(g => g.name === args.name)
-        const updatedGoal = {name: goalToEdit.name,
-          description: goalToEdit.description,
-          steps: goalToEdit.steps,
-          increments: goalToEdit.increments,
-          progress: args.setProgress
+        const goalToEdit = await Goal.findById(args.id)
+        const updatedGoal = {
+          id: args.id,
+          name: args.name ? args.name :   goalToEdit.name,
+          description: args.description ? args.description : goalToEdit.description,
+          steps: args.steps ? args.steps : goalToEdit.steps,
+          increments: args.increments ? args.increments :  goalToEdit.increments,
+          progress: args.progress ? args.progress : args.setProgress
           }
           await Goal.findByIdAndUpdate(goalToEdit.id,updatedGoal )
           
