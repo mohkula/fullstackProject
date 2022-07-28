@@ -8,13 +8,11 @@ const useEditGoal = () => {
 
    
 
-    const editGoal = async ({name, setProgress}) => {
-        mutate({
-            variables: {
-                name: name,
-                setProgress: setProgress
-            },
-        })
+    const editGoal = async (variables) => {
+        mutate(
+            
+            variables
+        )
     }
 
 return[editGoal, result]
