@@ -1,5 +1,5 @@
 
-import {  StyleSheet, View, Pressable } from "react-native";
+import {Alert,  StyleSheet, View, Pressable, Modal } from "react-native";
 
 import Text from "./Text";
 
@@ -7,15 +7,16 @@ import ProgressBar from "./ProgressBar";
 import { useState } from "react";
 import useEditGoal from "../hooks/useEditGoal";
 import theme from "../../theme";
-
+import EditGoal from "./editGoal";
+import { useNavigate } from "react-router-native";
   
 const GoalCounter = (props) => {
 
 
 
-
+const navigate = useNavigate()
     const [editGoal, result] = useEditGoal();
-
+const [showModal, setShowModal] = useState(false)
 
   const setProgress = async(setProgress,name) =>{
 
@@ -23,8 +24,10 @@ const GoalCounter = (props) => {
     
     try{
         const {data} = await editGoal({
-         name,
-         setProgress
+            variables: {
+                name: name,
+                setProgress: setProgress
+            }
         })
   
       } catch (e) {
@@ -52,20 +55,53 @@ const decreaseCount = () => {
 }
 
 
+
+const deleteButton = () => {
+
+    return (
+        <Pressable style={styles.deleteCircle} onPress={() => props.removeGoal(props.id)}>
+        <Text color ='primary'> X </Text>
+        
+        
+        </Pressable>
+    )
+}
+
+
     
     
     return (
     <View style= {styles.container}>
+        <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showModal}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+
+<EditGoal close = {() => setShowModal(false)}id = {props.id} name = {props.name} description = {props.description} 
+steps = {props.steps} increments= {props.increments}/>
+
+
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setShowModal(false)}
+            >
+              <Text color = 'primary'>cancel</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     <View style={styles.flexColumn}>
-    <Pressable style={styles.deleteCircle} onPress={() => props.removeGoal(props.id)}>
-<Text color ='primary'> X </Text>
+  
 
-
-</Pressable>
-
+    {deleteButton()}
 
 <View style={styles.flexContainer}>
-
 
 
 <Pressable style={styles.circle} 
@@ -75,11 +111,12 @@ const decreaseCount = () => {
 
 </Pressable>
 
-<View style={styles.flexColumn}> 
 
+<View style={styles.flexColumn}> 
+<Pressable onPress={() => setShowModal(true)}>
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
-
+</Pressable>
 
 </View>
 
@@ -105,14 +142,13 @@ const decreaseCount = () => {
 const styles = StyleSheet.create({
    container:{
     backgroundColor: theme.colors.primary,
-    width: 400,
-        height: 200,
+    
    },
     flexContainer: {
         
         
          flexDirection: 'row',
-         justifyContent: 'space-between',
+         justifyContent: 'space-around',
          padding: 10
          
          
@@ -126,17 +162,17 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         padding: 10,
         alignItems: 'center',
-
+        justifyContent: 'space-around',
 
     },
 
     circle: {
-        width: 100,
-    height: 100,
-    justifyContent: 'center',
+        width: 70,
+    height: 70,
+    justifyContent: 'space-around',
     alignItems: 'center',
     padding: 10,
-    borderRadius: 100,
+    borderRadius: 60,
     backgroundColor: 'orange',
       },
       deleteCircle: {
@@ -147,6 +183,30 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 20,
     backgroundColor: 'red',
+      },
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
       }
 
     
