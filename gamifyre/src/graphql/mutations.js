@@ -44,11 +44,17 @@ export const LOGIN = gql`
 
 export const EDIT_GOAL = gql`
 
-mutation editGoal($name: String!, $setProgress: Int!){
+mutation editGoal($id: ID!, $name: String, $setProgress: Int, $description: String,
+  $steps: Int, $increments: Int){
 
-  editGoal(name: $name, setProgress: $setProgress)  {
+  editGoal(id: $id, name: $name, setProgress: $setProgress, description: $description,
+    steps: $steps, increments: $increments)  {
+    id
     name
     progress
+    description
+    steps
+    increments
   }
 }
 `

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
    
   });
 
-const NewGoalForm = ({ onSubmit }) => {
+const NewGoalForm = ({ onSubmit, submitButton }) => {
   return (
 
     <View style={styles.container}>
@@ -45,7 +45,8 @@ const NewGoalForm = ({ onSubmit }) => {
           fontWeight="bold"
           fontSize="subheading"
           >
-          Create a goal
+            {submitButton ? submitButton : "Create a goal"}
+          
         </Text>
       </Pressable>
           </View>

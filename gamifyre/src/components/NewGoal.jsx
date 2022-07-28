@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Formik } from "formik"
 import { useNavigate } from "react-router-native";
 
 import * as yup from "yup";
