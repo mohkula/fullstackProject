@@ -1,22 +1,23 @@
 
-import {Alert,  StyleSheet, View, Pressable, Modal } from "react-native";
+import {  StyleSheet, View, Pressable } from "react-native";
+
+
+import { useState } from "react";
 
 import Text from "./Text";
-
-import ProgressBar from "./ProgressBar";
-import { useState } from "react";
-import useEditGoal from "../hooks/useEditGoal";
 import theme from "../../theme";
+import ProgressBar from "./ProgressBar";
+import useEditGoal from "../hooks/useEditGoal";
 import EditGoal from "./editGoal";
-import { useNavigate } from "react-router-native";
+import EditGoalModal from "./editGoalModal";
   
 const GoalCounter = (props) => {
 
 
+    const [showModal, setShowModal] = useState(false)
 
-const navigate = useNavigate()
     const [editGoal, result] = useEditGoal();
-const [showModal, setShowModal] = useState(false)
+
 
   const setProgress = async(setProgress,name) =>{
 
@@ -39,18 +40,29 @@ const [showModal, setShowModal] = useState(false)
     const [count, setCount] = useState(Number(props.progress))
 
 
-const increaseCount = () => {
-if(count + props.increments <= props.steps){
-    setCount(count + props.increments)
-    setProgress(count + props.increments, props.name)
+const increaseCount = (increase) => {
+   
+
+if(count + increase <= props.steps){
+    setCount(count  + increase)
+    setProgress(count + increase, props.name)
     
 }
+
+else{setCount(props.steps)
+    setProgress(props.steps, props.name)
 }
 
-const decreaseCount = () => {
-    if(count - props.increments >= 0){
-        setCount(count - props.increments)
-        setProgress(count - props.increments, props.name)
+}
+
+const decreaseCount = (decrease) => {
+    if(count - decrease >= 0){
+        setCount(count - decrease)
+        setProgress(count - decrease, props.name)
+    }
+    else{
+        setCount(0)
+        setProgress(0, props.name)
     }
     
 }
@@ -73,32 +85,9 @@ const deleteButton = () => {
     
     return (
     <View style= {styles.container}>
-        <Modal
-        animationType="slide"
-        transparent={true}
-        visible={showModal}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-
-<EditGoal refetchGoals = {props.refetchGoals} close  = {() => {setShowModal(false)
-}
-}id = {props.id} name = {props.name} description = {props.description} 
-steps = {String(props.steps)} increments= {String(props.increments)}/>
-
-
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setShowModal(false)}
-            >
-              <Text color = 'primary'>cancel</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+       <EditGoalModal  show ={showModal}refetchGoals = {props.refetchGoals} id = {props.id} 
+       name={props.name} description = {props.description} steps = {props.steps}
+       increments={props.increments}/>
     <View style={styles.flexColumn}>
   
 
@@ -108,7 +97,7 @@ steps = {String(props.steps)} increments= {String(props.increments)}/>
 
 
 <Pressable style={styles.circle} 
- onPress={decreaseCount
+ onPress={ () => decreaseCount(props.increments)
 }>
     <Text color ='primary'> - </Text>
 
@@ -117,6 +106,7 @@ steps = {String(props.steps)} increments= {String(props.increments)}/>
 
 <View style={styles.flexColumn}> 
 <Pressable onPress={() => setShowModal(true)}>
+    
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
 </Pressable>
@@ -125,9 +115,11 @@ steps = {String(props.steps)} increments= {String(props.increments)}/>
 
 
 <Pressable style={styles.circle} 
- onPress={ increaseCount
+ onPress={ () => increaseCount(props.increments)
  
 }
+onLongPress = {() => console.log("long press")}
+
 
 >
     <Text color ='primary'> + </Text>
