@@ -87,7 +87,7 @@ const deleteButton = () => {
 <EditGoal refetchGoals = {props.refetchGoals} close  = {() => {setShowModal(false)
 }
 }id = {props.id} name = {props.name} description = {props.description} 
-steps = {props.steps} increments= {props.increments}/>
+steps = {String(props.steps)} increments= {String(props.increments)}/>
 
 
             <Pressable
