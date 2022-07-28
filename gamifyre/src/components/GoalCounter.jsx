@@ -25,6 +25,7 @@ const [showModal, setShowModal] = useState(false)
     try{
         const {data} = await editGoal({
             variables: {
+                id: props.id,
                 name: name,
                 setProgress: setProgress
             }
@@ -83,7 +84,9 @@ const deleteButton = () => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
 
-<EditGoal close = {() => setShowModal(false)}id = {props.id} name = {props.name} description = {props.description} 
+<EditGoal refetchGoals = {props.refetchGoals} close  = {() => {setShowModal(false)
+}
+}id = {props.id} name = {props.name} description = {props.description} 
 steps = {props.steps} increments= {props.increments}/>
 
 

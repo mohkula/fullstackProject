@@ -80,13 +80,18 @@ try{
         
 
       })
-      await apolloClient.resetStore()
-
+      
     } catch (e) {
+        
       console.log(e);
     }
+
+    await apolloClient.resetStore()
+      props.refetchGoals()
 props.close()
+
       navigate('/')
+     
           
       
     };

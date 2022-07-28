@@ -20,7 +20,7 @@ import useGoals from "../hooks/useGoals";
       try {
         await deleteGoal(id);
         await apolloClient.resetStore()
-        refetch()
+        refetchGoals()
 
      } catch (e) {
         console.log(e);
@@ -35,7 +35,10 @@ import useGoals from "../hooks/useGoals";
 
 const { goals, refetch} = useGoals()
 
-
+const refetchGoals = () => {
+  console.log("refetching")
+  refetch()
+}
 
 let goalNodes = goals ? goals.allGoals
 : 
@@ -59,6 +62,7 @@ let goalNodes = goals ? goals.allGoals
      
           <GoalCounter name={item.name}
           removeGoal = {removeGoal}
+          refetchGoals = {refetchGoals}
            steps={item.steps} 
            increments = {item.increments} 
            description = {item.description}
