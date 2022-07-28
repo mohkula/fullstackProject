@@ -15,4 +15,5 @@
 | 21.7.2022 |1,5 | Form validation, deletion of goals added to front- and backend. Goals are now linked to the users who made them |
 | 22.7.2022 |2 | Form validation, error messages and styles. Moved goal fetching from home to goalCounterList |
 | 27.7.2022 |1 | Fixed goal fetching to goalList. Added refetching after deleting a goal. Style changes to goalCounter |
-| total   | 21   | | 
+| 28.7.2022 |2,5 | Added a form to edit the goals. Integrated goal edit form as a modal to goalCounter |
+| total   | 23,4   | | 
