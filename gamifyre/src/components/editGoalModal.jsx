@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {Alert,  StyleSheet, View, Pressable, Modal } from "react-native";
 import Text from "./Text";
 import EditGoal from "./editGoal";
@@ -29,7 +28,7 @@ steps = {String(props.steps)} increments= {String(props.increments)}/>
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setShowModal(false)}
+              onPress={() => props.setShowModal(false)}
              
             >
               <Text color = 'primary'>cancel</Text>

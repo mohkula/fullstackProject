@@ -8,13 +8,15 @@ import Text from "./Text";
 import theme from "../../theme";
 import ProgressBar from "./ProgressBar";
 import useEditGoal from "../hooks/useEditGoal";
-import EditGoal from "./editGoal";
 import EditGoalModal from "./editGoalModal";
-  
+import EditProgressModal from "./editProgressModal"
 const GoalCounter = (props) => {
+
+ const [negative, setNegative] = useState(false)
 
 
     const [showModal, setShowModal] = useState(false)
+    const [showModal2, setShowModal2] = useState(false)
 
     const [editGoal, result] = useEditGoal();
 
@@ -40,31 +42,36 @@ const GoalCounter = (props) => {
     const [count, setCount] = useState(Number(props.progress))
 
 
-const increaseCount = (increase) => {
-   
+const changeCount = (value) => {
 
-if(count + increase <= props.steps){
-    setCount(count  + increase)
-    setProgress(count + increase, props.name)
-    
-}
-
-else{setCount(props.steps)
+  if(value >= 0){
+    if(count + value <= props.steps){
+      setCount(count  + value)
+      setProgress(count + value, props.name)
+      
+  }
+  else{
+    setCount(props.steps)
     setProgress(props.steps, props.name)
-}
+  }
+  }
+  else{
+    if(count + value >= 0){
+      setCount(count  + value)
+      setProgress(count + value, props.name)
 
-}
-
-const decreaseCount = (decrease) => {
-    if(count - decrease >= 0){
-        setCount(count - decrease)
-        setProgress(count - decrease, props.name)
     }
     else{
-        setCount(0)
-        setProgress(0, props.name)
+      setCount(0)
+      setProgress(0, props.name)
     }
-    
+  }
+   
+
+
+
+
+
 }
 
 
@@ -80,14 +87,31 @@ const deleteButton = () => {
     )
 }
 
+const modalView = () => {
+
+return (
+  <EditGoalModal setShowModal = {setShowModal} refetchGoals = {props.refetchGoals} id = {props.id} 
+       name={props.name} description = {props.description} steps = {props.steps}
+       increments={props.increments}/>
+)
+}
+
+const modal2View = () => {
+
+
+  return (
+   
+<EditProgressModal name={props.name} setShowModal2={setShowModal2} 
+changeCount = {changeCount}  negative ={negative} setNegative={setNegative}/>
+  )
+}
+
 
     
     
     return (
     <View style= {styles.container}>
-       {showModal ? <EditGoalModal setShowModal = {setShowModal} refetchGoals = {props.refetchGoals} id = {props.id} 
-       name={props.name} description = {props.description} steps = {props.steps}
-       increments={props.increments}/> : 
+       {showModal ? modalView() : 
        null }
     <View style={styles.flexColumn}>
   
@@ -97,9 +121,17 @@ const deleteButton = () => {
 <View style={styles.flexContainer}>
 
 
+
 <Pressable style={styles.circle} 
- onPress={ () => decreaseCount(props.increments)
-}>
+ onPress={ () => changeCount(-props.increments)
+}
+onLongPress = { () => {
+  setNegative(true)
+  setShowModal2(true)
+  }
+}
+
+>
     <Text color ='primary'> - </Text>
 
 </Pressable>
@@ -107,19 +139,25 @@ const deleteButton = () => {
 
 <View style={styles.flexColumn}> 
 <Pressable onPress={() => setShowModal(true)}>
+  
+    
     
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
 </Pressable>
 
 </View>
-
+{showModal2 ? modal2View() : null}
 
 <Pressable style={styles.circle} 
- onPress={ () => increaseCount(props.increments)
+ onPress={ () => changeCount(props.increments)
  
 }
-onLongPress = {() => console.log("long press")}
+onLongPress = { () => {
+  
+setShowModal2(true)
+}
+}
 
 
 >
