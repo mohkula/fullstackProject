@@ -9,7 +9,7 @@
 |12.7.2022|3|  Modified the progress bar to show progress correctly. Added a Goal counter list to home view to show all goals saved in the backend |
 |13.7.2022|1|  Configured mongodb and modified the typedefs and resolvers accordingly. Modified some hooks in the frontend |
 |14.7.2022|1,5|Added signup for user creation. Goal creation form now saves to backend. Made tweaks to progress bar |
-| 15.7.2022| 2 |Added login functionality, and made the homeview depening on wether the user is logged in or not|
+| 15.7.2022| 2 |Added login functionality, and made the homeview depening on whether the user is logged in or not|
 | 19.7.2022| 2,5 |Modifications to Goal and User models. Added functionality to save the progress of goals to backend |
 | 20.7.2022 |1 | The progress of loaded goals is now shown in the frontend. Some form validations to the newGoalForm |
 | 21.7.2022 |1,5 | Form validation, deletion of goals added to front- and backend. Goals are now linked to the users who made them |
