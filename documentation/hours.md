@@ -16,4 +16,5 @@
 | 22.7.2022 |2 | Form validation, error messages and styles. Moved goal fetching from home to goalCounterList |
 | 27.7.2022 |1 | Fixed goal fetching to goalList. Added refetching after deleting a goal. Style changes to goalCounter |
 | 28.7.2022 |2,5 | Added a form to edit the goals. Integrated goal edit form as a modal to goalCounter |
-| total   | 23,5   | | 
+| 29.7.2022 |2 | modified modal behaviour of goal editing. Added a new modal and form to increase or decrease the progress with custom number. Organizing of code in goalCounter |
+| total   | 25,5   | | 
