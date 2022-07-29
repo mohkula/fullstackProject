@@ -6,7 +6,6 @@ import EditGoal from "./editGoal";
 
 const EditGoalModal = (props) => {
 
-    const [showModal, setShowModal] = useState(false)
 
 
     return (
@@ -14,7 +13,7 @@ const EditGoalModal = (props) => {
         <Modal
         animationType="slide"
         transparent={true}
-        visible={props.show}
+        visible={true}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
         }}
@@ -22,7 +21,7 @@ const EditGoalModal = (props) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
 
-<EditGoal refetchGoals = {props.refetchGoals} close  = {() => {setShowModal(false)
+<EditGoal refetchGoals = {props.refetchGoals} close  = {() => {props.setShowModal(false)
 }
 }id = {props.id} name = {props.name} description = {props.description} 
 steps = {String(props.steps)} increments= {String(props.increments)}/>

@@ -85,9 +85,10 @@ const deleteButton = () => {
     
     return (
     <View style= {styles.container}>
-       <EditGoalModal  show ={showModal}refetchGoals = {props.refetchGoals} id = {props.id} 
+       {showModal ? <EditGoalModal setShowModal = {setShowModal} refetchGoals = {props.refetchGoals} id = {props.id} 
        name={props.name} description = {props.description} steps = {props.steps}
-       increments={props.increments}/>
+       increments={props.increments}/> : 
+       null }
     <View style={styles.flexColumn}>
   
 
