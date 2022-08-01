@@ -32,6 +32,10 @@ const schema = new mongoose.Schema({
   createdAt: {
     type: Date,
     required: true
+  },
+  lastEdited: {
+    type: Date,
+    
   }
 })
 

@@ -5,7 +5,14 @@ const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
 
 const {AuthenticationError} = require('apollo-server')
 
-
+const getTodaysDate = () =>{
+  let today = new Date();
+  const dd = String(today.getDate()).padStart(2, '0');
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+  const yyyy = today.getFullYear();
+  
+  return dd + '/' + mm + '/' + yyyy;
+}
 const {UserInputError} = require('apollo-server')
 const resolvers = {
     Query: {
@@ -33,12 +40,7 @@ const resolvers = {
             throw new AuthenticationError("not authenticated")
           }
 
-          let today = new Date();
-          const dd = String(today.getDate()).padStart(2, '0');
-          const mm = String(today.getMonth() + 1).padStart(2, '0'); 
-          const yyyy = today.getFullYear();
-          
-          today = dd + '/' + mm + '/' + yyyy;
+         
 
 
             const newGoal = new Goal({
@@ -48,7 +50,8 @@ const resolvers = {
                 increments: args.increments,
                 progress: args.progress,
                 madeBy: args.madeBy,
-                createdAt: today
+                createdAt: getTodaysDate(),
+                lastEdited: ''
             })
 
             
@@ -100,15 +103,15 @@ const resolvers = {
     },
 
     editGoal: async(root, args, context) => {
-
-
+console.log("vi")
+console.log(args)
       const currentUser = context.currentUser
 
         if (!currentUser) {
           throw new AuthenticationError("not authenticated")
         }
 
-        
+     
 
         const goalToEdit = await Goal.findById(args.id)
         const updatedGoal = {
@@ -117,9 +120,11 @@ const resolvers = {
           description: args.description ? args.description : goalToEdit.description,
           steps: args.steps ? args.steps : goalToEdit.steps,
           increments: args.increments ? args.increments :  goalToEdit.increments,
-          progress: args.progress ? args.progress : args.setProgress
+          progress: args.progress ? args.progress : args.setProgress,
+          lastEdited: args.date ? getTodaysDate() : goalToEdit.lastEdited
           }
           await Goal.findByIdAndUpdate(goalToEdit.id,updatedGoal )
+          console.log(updatedGoal)
           
           return updatedGoal
     },

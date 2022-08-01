@@ -11,6 +11,7 @@ const typeDefs = gql`
     id: ID!
     madeBy: ID!
     createdAt: String!
+    lastEdited: String
   }
 
   type User {
@@ -63,6 +64,8 @@ const typeDefs = gql`
         description: String
         steps: Int
         increments: Int
+        date: Boolean
+
         
 
       ): Goal
