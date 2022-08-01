@@ -33,13 +33,22 @@ const resolvers = {
             throw new AuthenticationError("not authenticated")
           }
 
+          let today = new Date();
+          const dd = String(today.getDate()).padStart(2, '0');
+          const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+          const yyyy = today.getFullYear();
+          
+          today = dd + '/' + mm + '/' + yyyy;
+
+
             const newGoal = new Goal({
                 name: args.name,
                 description: args.description,
                 steps: args.steps,
                 increments: args.increments,
                 progress: args.progress,
-                madeBy: args.madeBy
+                madeBy: args.madeBy,
+                createdAt: today
             })
 
             

@@ -28,6 +28,10 @@ const schema = new mongoose.Schema({
       required: true,
       ref: 'User'
     
+  },
+  createdAt: {
+    type: Date,
+    required: true
   }
 })
 
