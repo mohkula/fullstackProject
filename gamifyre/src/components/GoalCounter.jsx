@@ -100,9 +100,10 @@ const modal2View = () => {
 
 
   return (
-   
+   <View style={styles.container}>
 <EditProgressModal name={props.name} setShowModal2={setShowModal2} 
 changeCount = {changeCount}  negative ={negative} setNegative={setNegative}/>
+</View>
   )
 }
 

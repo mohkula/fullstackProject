@@ -50,11 +50,14 @@ const EditProgressModal = (props) => {
       <View style={styles.modalView}>
 
 <Text color='primary'> Edit value of {props.name} </Text>
+<Text color='primary'> value =  value {props.negative ? '-' : '+'} ? </Text>
+
+
 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}
 >
       {({ handleSubmit }) => { return(
-        <View style={styles.container }>
-   <FormikTextInput name='value' placeholder=""/>
+        <View >
+   <FormikTextInput  style = {styles.container} name='value' placeholder=""/>
    <Pressable style={styles.continer} onPress={handleSubmit}>
      <Text style={{ textAlign: 'center'}} color="primary" fontWeight='bold' fontSize="body">Edit</Text>
    </Pressable>
@@ -75,6 +78,7 @@ const EditProgressModal = (props) => {
       </View>
     </View>
   </Modal>
+ 
     )
 }
 
@@ -83,7 +87,9 @@ const EditProgressModal = (props) => {
 
 const styles = StyleSheet.create({
 
-       
+       container: {
+        backgroundColor: 'grey'
+       },
        buttonClose: {
          backgroundColor: "#2196F3",
        },
