@@ -11,6 +11,11 @@ import useEditGoal from "../hooks/useEditGoal";
 import EditGoalModal from "./editGoalModal";
 import EditProgressModal from "./editProgressModal"
 const GoalCounter = (props) => {
+  console.log(props.lastEdited)
+const dd = Date(props.lastEdited)
+
+
+
 
  const [negative, setNegative] = useState(false)
 
@@ -30,13 +35,16 @@ const GoalCounter = (props) => {
             variables: {
                 id: props.id,
                 name: name,
-                setProgress: setProgress
+                setProgress: setProgress,
+                date: true
             }
         })
   
       } catch (e) {
+        
         console.log(e);
       }
+    
   }
     
     const [count, setCount] = useState(Number(props.progress))
@@ -145,6 +153,10 @@ onLongPress = { () => {
     
 <Text color = 'primary'> {props.name}</Text>
 <ProgressBar progress={count} steps={props.steps}/>
+
+<Text color='primary'>{(Date(props.lastEdited))
+  }</Text>
+
 </Pressable>
 
 </View>
@@ -164,7 +176,9 @@ setShowModal2(true)
 >
     <Text color ='primary'> + </Text>
 
+
 </Pressable>
+
 
 
 </View>

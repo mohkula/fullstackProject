@@ -11,6 +11,7 @@ query {
       progress
       madeBy
       id
+      lastEdited
       
     }
   } 

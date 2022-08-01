@@ -9,11 +9,14 @@ const useEditGoal = () => {
    
 
     const editGoal = async (variables) => {
+        console.log(variables)
+
         mutate(
             
             variables
         )
     }
+
 
 return[editGoal, result]
 }

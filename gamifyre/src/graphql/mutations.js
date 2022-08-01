@@ -45,16 +45,17 @@ export const LOGIN = gql`
 export const EDIT_GOAL = gql`
 
 mutation editGoal($id: ID!, $name: String, $setProgress: Int, $description: String,
-  $steps: Int, $increments: Int){
+  $steps: Int, $increments: Int, $date: Boolean){
 
   editGoal(id: $id, name: $name, setProgress: $setProgress, description: $description,
-    steps: $steps, increments: $increments)  {
+    steps: $steps, increments: $increments, date: $date)  {
     id
     name
     progress
     description
     steps
     increments
+    
   }
 }
 `

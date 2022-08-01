@@ -46,6 +46,7 @@ useEffect(() => {
 
 
 const loggedView = () => {
+  
 
   if(user){
     return(

@@ -68,6 +68,7 @@ let goalNodes = goals ? goals.allGoals
            description = {item.description}
            progress = {item.progress}
            id = {item.id}
+           lastEdited={item.lastEdited}
            />
         )}
         keyExtractor={(item) => item.name}
