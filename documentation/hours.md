@@ -18,4 +18,5 @@
 | 28.7.2022 |2,5 | Added a form to edit the goals. Integrated goal edit form as a modal to goalCounter |
 | 29.7.2022 |2 | modified modal behaviour of goal editing. Added a new modal and form to increase or decrease the progress with custom number. Organizing of code in goalCounter |
 | 1.8.2022 |1,5 | Added created at and last edited to goal model to show when goals are created and when progress is added. Some styling |
-| total   | 27   | | 
+|7.9.2022 |2 |Configured backend to fly.io. Made expo publish. Project can now be accessed via expo go app |
+| total   | 29   | | 
