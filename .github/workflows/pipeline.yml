@@ -14,10 +14,11 @@ jobs:
         with:
           node-version: '16'
         
-      - name: lint
+      - name: lint and test
         run: |
           cd gamifyre/
           npm ci
           npm ci --dev
           npm run lint
+          npm run test
           
