@@ -45,7 +45,7 @@ jobs:
             cd gamifyre/
             npm ci
 
-      - name: Publish app
+      - name: Publish frontend to expo
         run: |
             cd gamifyre/
             expo publish --non-interactive
