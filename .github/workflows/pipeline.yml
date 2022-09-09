@@ -24,30 +24,30 @@ jobs:
           
   deploy: 
     runs-on: ubuntu-20.04
-      steps:
-        - name: Setup repo
-          uses: actions/checkout@v2
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
 
-        - name: Setup Node
-          uses: actions/setup-node@v2
-          with:
-            node-version: '16'
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
             
 
-        - name: Setup Expo
-          uses: expo/expo-github-action@v7
-          with:
-            expo-version: latest
-            token: ${{ secrets.EXPO_TOKEN }}
+      - name: Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
 
-        - name: Install dependenciees
-          run: |
-              cd gamifyre/
-              npm ci
+      - name: Install dependenciees
+        run: |
+            cd gamifyre/
+            npm ci
 
-        - name: Publish app
-          run: |
-              cd gamifyre/
-              expo publish --non-interactive
+      - name: Publish app
+        run: |
+            cd gamifyre/
+            expo publish --non-interactive
         
 
