@@ -46,6 +46,7 @@ return helper % value === 0
 const NewGoal = () => {
 const navigate = useNavigate() 
 
+// eslint-disable-next-line no-unused-vars
 const [createGoal, result] = useCreateGoal();
 
 const apolloClient = useApolloClient()
@@ -64,6 +65,7 @@ const madeBy = data.me.id
       steps = Number(steps)
       increments = Number(increments)
 try{
+      // eslint-disable-next-line no-unused-vars
       const {data} = await createGoal({
         name, 
         description,

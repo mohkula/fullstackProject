@@ -32,6 +32,7 @@ const TopBar =  () => {
 
 const authStorage = useAuthStorage()
 const apolloClient = useApolloClient();
+  // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null)
 
 

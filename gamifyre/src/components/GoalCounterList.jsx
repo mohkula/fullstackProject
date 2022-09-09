@@ -10,7 +10,7 @@ import useGoals from "../hooks/useGoals";
   const GoalCounterList = () => {
     const apolloClient = useApolloClient()
 
-
+      // eslint-disable-next-line no-unused-vars
     const [deleteGoal, res] = useDeleteGoal();
 
 

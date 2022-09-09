@@ -1,7 +1,6 @@
 
 import {   View, StyleSheet } from 'react-native';
 import { useState, useEffect } from 'react';
-import useGoals from '../hooks/useGoals';
 import Text from './Text';
 import { ME } from '../graphql/queries';
 import { useQuery } from '@apollo/client';
@@ -22,6 +21,7 @@ if(data){
 
   user = data.me
 }
+      // eslint-disable-next-line no-unused-vars
   const [token, setToken] = useState(null)
 
 const authStorage = useAuthStorage()

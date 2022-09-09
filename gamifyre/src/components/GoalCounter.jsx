@@ -12,7 +12,6 @@ import EditGoalModal from "./editGoalModal";
 import EditProgressModal from "./editProgressModal"
 const GoalCounter = (props) => {
   console.log(props.lastEdited)
-const dd = Date(props.lastEdited)
 
 
 
@@ -23,6 +22,7 @@ const dd = Date(props.lastEdited)
     const [showModal, setShowModal] = useState(false)
     const [showModal2, setShowModal2] = useState(false)
 
+    // eslint-disable-next-line no-unused-vars
     const [editGoal, result] = useEditGoal();
 
 
@@ -31,6 +31,7 @@ const dd = Date(props.lastEdited)
  
     
     try{
+            // eslint-disable-next-line no-unused-vars
         const {data} = await editGoal({
             variables: {
                 id: props.id,

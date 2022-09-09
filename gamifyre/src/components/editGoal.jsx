@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import { useNavigate } from "react-router-native";
 
-import { useState } from "react";
 import * as yup from "yup";
 import { useApolloClient , useQuery} from "@apollo/client";
 
@@ -44,10 +43,12 @@ const EditGoal = (props) => {
 
 const navigate = useNavigate() 
 
+// eslint-disable-next-line no-unused-vars
 const [editGoal, result] = useEditGoal();
 
 const apolloClient = useApolloClient()
 
+// eslint-disable-next-line no-unused-vars
 const { data } = useQuery(ME, {
   fetchPolicy: "cache-and-network",
 });
@@ -70,6 +71,7 @@ const initialValues = {
       increments = Number(increments)
      const id = props.id
 try{
+      // eslint-disable-next-line no-unused-vars
       const {data} = await editGoal({
         variables: {
         id: id,
