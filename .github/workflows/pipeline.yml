@@ -16,5 +16,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: lint
-        run: cd gamifyre/
-        run: npm run lint
+        run: |
+          cd gamifyre/
+          npm run lint
+          
