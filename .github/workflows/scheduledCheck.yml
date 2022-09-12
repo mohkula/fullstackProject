@@ -1,11 +1,8 @@
 name: PING
 on: 
   schedule:
-  - cron: ""
+   - cron:  '30 5,17 * * *'
   
-
- 
-
 jobs:
   test_schedule:
     runs-on: ubuntu-latest
