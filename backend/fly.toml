@@ -17,7 +17,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 4000
+  internal_port = 40001
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
