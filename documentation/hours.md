@@ -20,4 +20,5 @@
 | 1.8.2022 |1,5 | Added created at and last edited to goal model to show when goals are created and when progress is added. Some styling. |
 |7.9.2022 |2 |Configured backend to fly.io. Made expo publish. Project can now be accessed via expo go app. |
 |9.9.2022| 3|Created github actions pipeline, added simple testing, linting and deployment of both back- and frontend to the pipeline.|
-| total   | 32   | | 
+|12.9.2022|2.5 |Added versioning, discord notification and healtcheck to the pipeline. Configured the actions to be run on pull request. Added Branch protection rules |
+| total   | 34.5   | | 
