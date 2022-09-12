@@ -1,7 +1,7 @@
 const Goal = require('../models/Goal')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
+const JWT_SECRET = process.env.JWT_SECRET
 
 const {AuthenticationError} = require('apollo-server')
 
