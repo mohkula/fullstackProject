@@ -39,6 +39,10 @@ jobs:
         with:
           expo-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
+          healthCheck: "http://192.168.1.108:4000/graphql?query=%7B__typename%7D"
+          checkstring: "ok"
+          delay: 1
+          rollbackonhealthcheckfailed: true
 
       - name: Install dependenciees
         run: |
@@ -49,5 +53,6 @@ jobs:
         run: |
             cd gamifyre/
             expo publish --non-interactive
-        
+      
+     
 
