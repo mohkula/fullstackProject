@@ -65,5 +65,32 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WITH_V: true
           DEFAULT_BUMP: patch
-          DRY_RUN: false   
+          DRY_RUN: false 
+
+  notification:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Test Success
+        uses: rjstone/discord-webhook-notify@v1
+        if: success()
+        with:
+          severity: info
+          username: Github
+          color: "#2bff00"
+          description: "Success"            
+          footer: "Severity: Informational"
+          text: "A new version deployed"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      - name: Test Failure
+        uses: rjstone/discord-webhook-notify@v1
+        if: failure()
+        with:
+          severity: error
+          username: Github
+          color: "#ff002b"
+          description: "Commit Failed !"
+          details: '${{github.event.commits.*.url}} broke the build'
+          footer: "Severity: Error"
+          text: "A new versiondeployed"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}  
 
