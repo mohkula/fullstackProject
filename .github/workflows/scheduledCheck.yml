@@ -1,7 +1,7 @@
 name: PING
 on: 
   schedule:
-   - cron:  '30 5,17 * * *'
+   - cron:  ''
   
 jobs:
   test_schedule:
