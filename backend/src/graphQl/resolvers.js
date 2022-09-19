@@ -19,6 +19,9 @@ const resolvers = {
       goalCount: () => Goal.collection.countDocuments(),
       allGoals: async(root, args) =>{
         let returnedGoals = await Goal.find({})
+        console.log("d")
+        console.log(process.env.JWT_SECRET)
+        console.log(JWT_SECRET)
 
         return returnedGoals
       }, 
