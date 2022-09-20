@@ -1,4 +1,5 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+// eslint-disable-next-line no-unused-vars
 import Constants from 'expo-constants';
 import { setContext } from '@apollo/client/link/context';
 
