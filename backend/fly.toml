@@ -10,7 +10,7 @@ processes = []
 
 [env]
   PORT = "4000"
-  JWT_SECRET = process.env.JWT_SECRET
+  
 
 [experimental]
   allowed_public_ports = []
