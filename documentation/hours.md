@@ -22,4 +22,5 @@
 |9.9.2022| 3|Created github actions pipeline, added simple testing, linting and deployment of both back- and frontend to the pipeline.|
 |12.9.2022|2.5 |Added versioning, discord notification and healtcheck to the pipeline. Configured the actions to be run on pull request. Added Branch protection rules |
 |19.9.2022|1|Fly secrets configurations added to fly deploy |
-| total   | 35.5   | | 
+|20.9.2022|4|fixed frontend to backend communication issues. Login now works in development and production |
+| total   | 39.5   | | 
