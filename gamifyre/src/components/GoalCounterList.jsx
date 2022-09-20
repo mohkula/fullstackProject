@@ -36,7 +36,6 @@ import useGoals from "../hooks/useGoals";
 const { goals, refetch} = useGoals()
 
 const refetchGoals = () => {
-  console.log("refetching")
   refetch()
 }
 

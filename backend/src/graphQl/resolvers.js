@@ -1,7 +1,13 @@
 const Goal = require('../models/Goal')
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
-const JWT_SECRET = process.env.JWT_SECRET
+require('dotenv').config()
+
+
+
+
+
+
 
 const {AuthenticationError} = require('apollo-server')
 
@@ -19,9 +25,6 @@ const resolvers = {
       goalCount: () => Goal.collection.countDocuments(),
       allGoals: async(root, args) =>{
         let returnedGoals = await Goal.find({})
-        console.log("d")
-        console.log(process.env.JWT_SECRET)
-        console.log(JWT_SECRET)
 
         return returnedGoals
       }, 
@@ -92,22 +95,18 @@ const resolvers = {
 
     login: async (root, args) => {
       const user = await User.findOne({ username: args.username })
-  
       if ( !user || args.password !== user.password ) {
         throw new UserInputError("wrong credentials")
       }
-  
       const userForToken = {
         username: user.username,
         id: user._id,
       }
   
-      return { value: jwt.sign(userForToken, JWT_SECRET) }
+      return { value: jwt.sign(userForToken, process.env.JWT_SECRET) }
     },
 
     editGoal: async(root, args, context) => {
-console.log("vi")
-console.log(args)
       const currentUser = context.currentUser
 
         if (!currentUser) {
@@ -127,7 +126,6 @@ console.log(args)
           lastEdited: args.date ? getTodaysDate() : goalToEdit.lastEdited
           }
           await Goal.findByIdAndUpdate(goalToEdit.id,updatedGoal )
-          console.log(updatedGoal)
           
           return updatedGoal
     },

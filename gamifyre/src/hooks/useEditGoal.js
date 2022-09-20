@@ -9,7 +9,6 @@ const useEditGoal = () => {
    
 
     const editGoal = async (variables) => {
-        console.log(variables)
 
         mutate(
             
