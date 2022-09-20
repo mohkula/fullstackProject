@@ -30,21 +30,24 @@ const Login = () => {
   const navigate = useNavigate()
   const apolloClient = useApolloClient();
 
+
+
  const onSubmit = async (values) => {
     const { username, password } = values;
 
+
     try {
       await signIn({ username, password });
-    
       navigate("/")
       await apolloClient.resetStore()
+
 
     } catch (e) {
       setError("wrong credentials")
       setTimeout(() => {
         setError('')
 }, 10000)
-      console.log(e);
+      
     }
   };
 

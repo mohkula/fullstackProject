@@ -11,7 +11,6 @@ import useEditGoal from "../hooks/useEditGoal";
 import EditGoalModal from "./editGoalModal";
 import EditProgressModal from "./editProgressModal"
 const GoalCounter = (props) => {
-  console.log(props.lastEdited)
 
 
 

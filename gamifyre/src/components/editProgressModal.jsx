@@ -43,7 +43,6 @@ const EditProgressModal = (props) => {
     transparent={true}
     visible={true}
     onRequestClose={() => {
-      console.log("close")
     }}
   >
     <View style={styles.centeredView}>

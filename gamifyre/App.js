@@ -23,6 +23,7 @@ const apolloClient = createApolloClient(authStorage);
 
 const App = () => {
   
+  
   return (
     <>
     <NativeRouter>
